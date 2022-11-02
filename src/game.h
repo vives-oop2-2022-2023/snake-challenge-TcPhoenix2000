@@ -11,8 +11,8 @@
 //# - render()      output canvas to renderer (terminal)
 //#################################
 #pragma once
-#include <snake.h>
-#include <canvas.h>
+#include "snake.h"
+#include "canvas.h"
 
 class Game{
     private:

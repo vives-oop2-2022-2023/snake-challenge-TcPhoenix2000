@@ -1,14 +1,12 @@
-#include <layout.h>
+#include "layout.h"
 
-class layout
-{
-    void Layout(unsigned int width,unsigned int height){
-        
-    }
-    void update(){
-        
-    }
-    std::vector<Point>blocks(){
-        
-    } 
-};
+
+void layout::Layout(unsigned int width,unsigned int height){
+    
+}
+void layout::update(){
+    
+}
+std::vector<Point>layout::blocks(){
+    
+} 

@@ -1,28 +1,60 @@
-#include <canvas.h>
+#include "canvas.h"
 
-class Canvas{
-    Canvas(void){
+using namespace std;
+
+    //┌───┐
+    //| . |
+    //└───┘
+
+    Canvas::Canvas(void){
+        
+    }
+    void Canvas::clear(void){
 
     }
-    void clear(void){
-
-    }
-    void pen_color(Color color){
+    void Canvas::pen_color(Color color){
 
     }       
-    void pixel(Point point){
+    void Canvas::pixel(Point point){
 
     }
-    void horizontal_line(Point Origin,unsigned int length ){
+    void Canvas::horizontal_line(Point Origin,unsigned int length ){
+        //horizontal ─── 
+    }
+    void Canvas::vertical_line(Point origin, unsigned int length){
+        //vertical │
 
     }
-    void vertical_line(Point origin, unsigned int length){
-
+    void Canvas::rectangle(Point origin,Point second){
+        //top corners    ┌ ┐
+        //bottom corners └ ┘
     }
-    void rectangle(Point origin,Point second){
+    std::array<std::array<Color,COLS>,ROWS> Canvas::buffer(){
+        /*std::array<std::array<std::string, COLS>, ROWS> _buffer;
+        // Render table
+            //┌───┐
+            //│...│
+            //│...│
+            //│...│
+            //│...│
+            //└───┘
+        cout <<"┌";
+        for (int i = 0; i < COLS; i++)
+        cout <<"─";
+        cout <<"┐"<< endl;
 
-    }
-    std::array<std::array<Color,20>,20> buffer(){
+        for (auto & line : _buffer) {
+            cout <<"│";
+            for (auto & element : line) {
+            cout << element << ".";
 
+            }
+            cout << "│" << endl;
+        }
+
+        cout <<"└";
+        for (int i = 0; i < COLS; i++)
+        cout <<"─";
+        cout <<"┘"<< endl;*/
+        return buffer();
     }
-};

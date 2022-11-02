@@ -1,28 +1,26 @@
-#include <color.h>
+#include "color.h"
 
-class Color{
-    Color(void){
+Color::Color(void){
 
-    }
-    Color(unsigned char red,unsigned char green,unsigned char blue){
+}
+Color::Color(unsigned char red,unsigned char green,unsigned char blue){
 
-    }
-    unsigned char red(){
+}
+/*unsigned char Color::red(){
 
-    }
-    unsigned char green(){
+}
+unsigned char Color::green(){
 
-    }
-    unsigned char blue(){
+}
+unsigned char Color::blue(){
 
-    }
-    unsigned char red(unsigned char red){
+}
+unsigned char Color::red(unsigned char red){
 
-    }
-    unsigned char green(unsigned char green){
+}
+unsigned char Color::green(unsigned char green){
 
-    }
-    unsigned char blue(unsigned char blue){
+}
+unsigned char Color::blue(unsigned char blue){
 
-    }
-};
+}*/

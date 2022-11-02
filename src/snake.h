@@ -18,8 +18,8 @@
 //# + update()
 //#################################
 #pragma once
-#include <point.h>
-#include <direction.h>
+#include "point.h"
+#include "direction.h"
 #include <vector>
 
 class Snake

@@ -1,35 +1,32 @@
-#include <snake.h>
+#include "snake.h"
 
-class Snake
-{
-    Snake(void){
-        
-    }
-    void up(){
-        
-    }
-    void down(){
-        
-    }
-    void left(){
-        
-    }
-    void right(){
-        
-    }
-    void stop(){
-        
-    }
-    void grow(unsigned int delta){
-        
-    }
-    std::vector<Point>body(){
-        
-    }
-    Point head(){
-        
-    }
-    void update(){
-        
-    }
-};
+Snake::Snake(void){
+    
+}
+void Snake::up(){
+    
+}
+void Snake::down(){
+    
+}
+void Snake::left(){
+    
+}
+void Snake::right(){
+    
+}
+void Snake::stop(){
+    
+}
+void Snake::grow(unsigned int delta){
+    
+}
+std::vector<Point>Snake::body(void){
+    return  body();
+}
+Point Snake::head(void){
+    return head();
+}
+void Snake::update(){
+    
+}

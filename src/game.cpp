@@ -1,15 +1,14 @@
-#include <game.h>
-class Game{
-    Game(){
+#include "game.h"
+
+    Game::Game(){
+        
+    }
+    void Game::update(){
 
     }
-    void update(){
-
-    }
-    void draw(){
-
+    void Game::draw(){
+        
     }  
-    void render(){
+    void Game::render(){
 
     }
-};

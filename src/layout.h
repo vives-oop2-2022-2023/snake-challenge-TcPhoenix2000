@@ -10,7 +10,7 @@
 //# + blocks(): std::vector<Point>
 //#################################
 #pragma once
-#include <point.h>
+#include "point.h"
 #include <vector>
 
 class layout

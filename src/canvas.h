@@ -14,13 +14,19 @@
 //# + buffer(): std::array<std::array<Color>>
 //################################
 #pragma once
+#include <iostream>
 #include <array>
-#include <point.h>
-#include <color.h>
+#include <string>
+
+#include "point.h"
+#include "color.h"
+
+#define COLS 10
+#define ROWS 5
 
 class Canvas{
     private:
-        std::array<std::array<Color,20>,20> _buffer;
+        std::array<std::array<Color,COLS>,ROWS> _buffer;
         Color penColor ;
 
     public:
@@ -31,5 +37,5 @@ class Canvas{
         void horizontal_line(Point Origin,unsigned int length );
         void vertical_line(Point origin, unsigned int length);
         void rectangle(Point origin,Point second);
-        std::array<std::array<Color,20>,20> buffer();
+        std::array<std::array<Color,COLS>,ROWS> buffer();
 };
