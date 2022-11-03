@@ -25,4 +25,5 @@ class Game{
         void update();      //update entities
         void draw();        //draw entities on canvas
         void render();      //output canvas to renderer (terminal)
+        void StartupSign(); //display startup ascii title sign
 };

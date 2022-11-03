@@ -21,8 +21,8 @@
 #include "point.h"
 #include "color.h"
 
-#define COLS 10
-#define ROWS 5
+#define COLS 100
+#define ROWS 10
 
 class Canvas{
     private:

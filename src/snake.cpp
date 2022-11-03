@@ -22,10 +22,10 @@ void Snake::grow(unsigned int delta){
     
 }
 std::vector<Point>Snake::body(void){
-    return  body();
+    return  body();//tmp
 }
 Point Snake::head(void){
-    return head();
+    return head();//tmp
 }
 void Snake::update(){
     

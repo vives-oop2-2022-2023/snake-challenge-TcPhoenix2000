@@ -2,21 +2,21 @@
 // run with :  ./bin/program
 #include <iostream>
 
+//temp include files array and string
 #include <array>
 #include <string>
 
-//#include "game.h"
+#include "game.h"
+#include "terminal.h"
 
-
-//temp default settings for canvas size
-#define COLS 128
-#define ROWS 10
 
 using namespace std;
-
+using namespace Bios;
 
 int main(){
     cout << " Sliding Slug the snake based Game application has started" << endl;
+    
+    Terminal::foreground_color("green",5);
 
     std::array<std::array<std::string, COLS>, ROWS> _buffer;
         // Render table
@@ -44,6 +44,5 @@ int main(){
         for (int i = 0; i < COLS; i++)
         cout <<"─";
         cout <<"┘"<< endl;
-
     return 0;
 }
