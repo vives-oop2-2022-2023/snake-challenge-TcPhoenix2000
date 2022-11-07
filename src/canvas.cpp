@@ -16,7 +16,7 @@ using namespace std;
 
     }       
     void Canvas::pixel(Point point){
-
+        // pixel 
     }
     void Canvas::horizontal_line(Point Origin,unsigned int length ){
         //horizontal ─── 
