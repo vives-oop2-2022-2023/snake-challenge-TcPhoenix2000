@@ -27,23 +27,30 @@ int main(){
             //│...│
             //│...│
             //└───┘
+            //head ⌂ 
+            //body □
+            _buffer[2][3]="▲";
+            _buffer[3][3]="█";
+            _buffer[4][3]="█";
+            _buffer[5][3]="█";
+
         cout <<"┌";
         for (int i = 0; i < COLS; i++)
         cout <<"─";
-        cout <<"┐"<< endl;
+        cout <<"─"<< endl;//┐
 
         for (auto & line : _buffer) {
             cout <<"│";
             for (auto & element : line) {
-            cout << element << ".";
+            cout << element << " ";
 
             }
-            cout << "│" << endl;
+            cout << endl;
         }
 
         cout <<"└";
         for (int i = 0; i < COLS; i++)
         cout <<"─";
-        cout <<"┘"<< endl;
+        cout <<"─"<< endl;//┘
     return 0;
 }

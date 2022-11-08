@@ -5,28 +5,26 @@ Color::Color(void){
 }
 Color::Color(unsigned char red,unsigned char green,unsigned char blue){
 
-}
-
-//this generates errors 
-/*unsigned char Color::red(){
-    return red;
+} 
+unsigned char Color::red(){
+    return;
 }
 unsigned char Color::green(){
-    return green;
+    return;
 }
 unsigned char Color::blue(){
-    return blue;
-}
-unsigned char Color::red(unsigned char red){
-    this->red=red;
     return;
 }
-unsigned char Color::green(unsigned char green){
-    this->green=green;
+unsigned char Color::red(void){
+    //this->red=red;
     return;
 }
-unsigned char Color::blue(unsigned char blue){
-    this->blue=blue;
+unsigned char Color::green(void){
+    //this->green=green;
+    return;
+}
+unsigned char Color::blue(void){
+    //this->blue=blue;
     return;
 
-}*/
+}

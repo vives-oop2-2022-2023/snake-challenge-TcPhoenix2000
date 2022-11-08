@@ -21,11 +21,10 @@ class Color{
     public:
         Color(void);
         Color(unsigned char red,unsigned char green,unsigned char blue);
-        /*unsigned char red();
+        unsigned char red();
         unsigned char green();
         unsigned char blue();
-        unsigned char red(unsigned char red);
-        unsigned char green(unsigned char green);
-        unsigned char blue(unsigned char blue);*/
-
+        unsigned char red(void);
+        unsigned char green(void);
+        unsigned char blue(void);
 };
