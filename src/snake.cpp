@@ -1,5 +1,7 @@
 #include "snake.h"
 
+using namespace VIVES;
+
 Snake::Snake(void){
     
 }

@@ -1,6 +1,7 @@
 #include "game.h"
 
 using namespace std;
+using namespace VIVES;
 
     Game::Game(){
         StartupSign();
@@ -9,8 +10,8 @@ using namespace std;
 
     }
     void Game::draw(){//draw entities on canvas
-        //head ⌂ 
-        //body □
+        //head ▲ 
+        //body █
     }
     void Game::render(){//output canvas to renderer (terminal)
         Canvas();

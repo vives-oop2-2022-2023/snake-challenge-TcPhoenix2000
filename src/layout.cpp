@@ -1,6 +1,6 @@
 #include "layout.h"
 
-
+using namespace VIVES;
 void layout::Layout(unsigned int width,unsigned int height){
     
 }

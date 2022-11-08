@@ -21,23 +21,24 @@
 #include "point.h"
 #include "direction.h"
 #include <vector>
-
-class Snake
-{
-    private:
-        std::vector<Point> snake;
-        Direction direction;
-        bool isMoving;
-        unsigned int START_LENGTH = 3;
-    public:
-        Snake(void);       //create snake of START_LENGTH
-        void up();
-        void down();
-        void left();
-        void right();
-        void stop();
-        void grow(unsigned int delta);
-        std::vector<Point>body();
-        Point head();
-        void update();
-};
+namespace VIVES{
+    class Snake
+    {
+        private:
+            std::vector<Point> snake;
+            Direction direction;
+            bool isMoving;
+            unsigned int START_LENGTH = 3;
+        public:
+            Snake(void);       //create snake of START_LENGTH
+            void up();
+            void down();
+            void left();
+            void right();
+            void stop();
+            void grow(unsigned int delta);
+            std::vector<Point>body();
+            Point head();
+            void update();
+    };
+}

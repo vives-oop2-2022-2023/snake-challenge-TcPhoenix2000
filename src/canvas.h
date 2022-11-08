@@ -23,19 +23,20 @@
 
 #define COLS 100
 #define ROWS 10
+namespace VIVES{
+    class Canvas{
+        private:
+            std::array<std::array<Color,COLS>,ROWS> _buffer;
+            Color penColor=Color(255,255,255);
 
-class Canvas{
-    private:
-        std::array<std::array<Color,COLS>,ROWS> _buffer;
-        Color penColor ;
-
-    public:
-        Canvas(void);
-        void clear(void);
-        void pen_color(Color color);       //set the active drawing color
-        void pixel(Point point);
-        void horizontal_line(Point Origin,unsigned int length );
-        void vertical_line(Point origin, unsigned int length);
-        void rectangle(Point origin,Point second);
-        std::array<std::array<Color,COLS>,ROWS> buffer();
-};
+        public:
+            Canvas(void);
+            void clear(void);
+            void pen_color(Color color);       //set the active drawing color
+            void pixel(Point point);
+            void horizontal_line(Point Origin,unsigned int length );
+            void vertical_line(Point origin, unsigned int length);
+            void rectangle(Point origin,Point second);
+            std::array<std::array<Color,COLS>,ROWS> buffer();
+    };
+}

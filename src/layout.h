@@ -12,14 +12,15 @@
 #pragma once
 #include "point.h"
 #include <vector>
-
-class layout
-{
-    private:
-        unsigned int width,height;
-        std::vector<Point> walls;
-    public:
-        void Layout(unsigned int width,unsigned int height);        //setup perimeter
-        void update();                                              //probable does nothing
-        std::vector<Point>blocks(); 
-};
+namespace VIVES{
+    class layout
+    {
+        private:
+            unsigned int width,height;
+            std::vector<Point> walls;
+        public:
+            void Layout(unsigned int width,unsigned int height);        //setup perimeter
+            void update();                                              //probable does nothing
+            std::vector<Point>blocks(); 
+    };
+}

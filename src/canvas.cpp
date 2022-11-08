@@ -1,7 +1,7 @@
 #include "canvas.h"
 
 using namespace std;
-
+using namespace VIVES;
     //┌───┐
     //| . |
     //└───┘

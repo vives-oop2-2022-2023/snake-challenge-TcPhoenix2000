@@ -1,30 +1,27 @@
 #include "color.h"
 
-Color::Color(void){
+using namespace VIVES;
+    Color::Color(void){
 
-}
-Color::Color(unsigned char red,unsigned char green,unsigned char blue){
+    }
+    Color::Color(unsigned char red,unsigned char green,unsigned char blue){
 
-} 
-unsigned char Color::red(){
-    return;
-}
-unsigned char Color::green(){
-    return;
-}
-unsigned char Color::blue(){
-    return;
-}
-unsigned char Color::red(void){
-    //this->red=red;
-    return;
-}
-unsigned char Color::green(void){
-    //this->green=green;
-    return;
-}
-unsigned char Color::blue(void){
-    //this->blue=blue;
-    return;
-
-}
+    } 
+    unsigned char Color::red(){
+        
+    }
+    unsigned char Color::green(){
+        
+    }
+    unsigned char Color::blue(){
+        
+    }
+    void Color::red(unsigned char red){
+        this->red_=red;
+    }
+    void Color::green(unsigned char green){
+        this->green_=green; 
+    }
+    void Color::blue(unsigned char blue){
+        this->blue_=blue;
+    }

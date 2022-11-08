@@ -27,8 +27,8 @@ int main(){
             //│...│
             //│...│
             //└───┘
-            //head ⌂ 
-            //body □
+            //head ▲ 
+            //body █
             _buffer[2][3]="▲";
             _buffer[3][3]="█";
             _buffer[4][3]="█";
