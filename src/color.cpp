@@ -28,9 +28,10 @@ using namespace VIVES;
         this->blue_=blue;
     }
     bool Color::equals(Color color)const{
-        this->red()== color.red() && 
+        return this->red()== color.red() && 
         this->green()== color.green() && 
         this->blue()== color.blue();
+        
     }
     const Color Color::BlACK = Color(0,0,0);
     const Color Color::WHITE = Color(255,255,255);

@@ -1,8 +1,8 @@
 //#################################
 //# Point <<struct>>
 //#################################
-//# + x: unsigned int
-//# + y: unsigned int
+//# + x: size_t
+//# + y: size_t
 //#################################
 #pragma once
 #include <cstddef>

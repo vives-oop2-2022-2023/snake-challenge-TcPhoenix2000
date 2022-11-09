@@ -1,29 +1,47 @@
 #include "game.h"
-
+#include <iostream>
+#include <chrono>
+#include <thread>
 
 using namespace std;
 using namespace VIVES;
-
-    Game::Game(void):_canvas(30,20){
+const int ROWS=40;
+const int COLS=20;
+    Game::Game(void):canvas(ROWS,COLS){
+        StartupSign();
+        std::this_thread::sleep_for(2000ms);
         start();
     }
     void Game::start(){
-        StartupSign();
         while (_isPlaying){
             update();
             draw();
             render();
-            //sleep todo            
+            //sleep 
+            std::this_thread::sleep_for(100ms);           
         }
     }
     void Game::update(){//update entities
 
     }
     void Game::draw(){//draw entities on canvas
-    
+        canvas.clear();
+        canvas.pen_color(Color::RED);
+        canvas.draw_pixel({2,6});//temp for canvas.draw_pixel(snake.head())
+        canvas.pen_color(Color::GREEN);
+        canvas.draw_pixel({2,5});//temp canvas.draw_pixel(snake.body())
+        /*
+        std::vector<Point> Snake = snake.body();
+        for (size_t i = 0; i < Snake.size(); i++) {
+            canvas.draw_pixel(Snake[i]);
+        }*/
+
+        canvas.pen_color(Color::BLUE);
+        canvas.rectangle({0, 0}, {ROWS-1,COLS-1});
     }
     void Game::render(void){//output canvas to renderer (terminal)
-        text_renderer.render(&_canvas);
+        //bitmap.generate( png,);
+        text_renderer.render(&canvas);
     }
 
     //head @ 

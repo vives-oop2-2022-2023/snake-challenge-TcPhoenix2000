@@ -41,6 +41,7 @@ color represents the set color to draw on the canvas
 # + red(red: unsigned char)
 # + green(green: unsigned char)
 # + blue(blue: unsigned char)
+# + equals(Color:color): bool
 #################################
 ```
 
@@ -49,8 +50,8 @@ point represents a point with x and y coordinates
 #################################
 # Point <<struct>>
 #################################
-# + x: unsigned int
-# + y: unsigned int
+# + x: size_t
+# + y: size_t
 #################################
 ```
 

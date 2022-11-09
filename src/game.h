@@ -21,8 +21,8 @@
 namespace VIVES{
     class Game{
         private:
-            Snake _snake;
-            Canvas _canvas;
+            Snake snake;
+            Canvas canvas;
             BitmapGenerator bitmap;
             TextRenderer text_renderer;
 
@@ -30,11 +30,10 @@ namespace VIVES{
         public:
             Game(void);
             void start(void);
+            void StartupSign(void); //display startup ascii title sign
         private:
             void update(void);      //update entities
             void draw(void);        //draw entities on canvas
             void render(void);      //output canvas to renderer (terminal)
-
-            void StartupSign(void); //display startup ascii title sign
     };
 }

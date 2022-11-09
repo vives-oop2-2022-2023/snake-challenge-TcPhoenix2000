@@ -13,6 +13,7 @@
 //# + red(red: unsigned char)
 //# + green(green: unsigned char)
 //# + blue(blue: unsigned char)
+//# + equals(Color:color): bool
 //#################################
 #pragma once
 namespace VIVES{

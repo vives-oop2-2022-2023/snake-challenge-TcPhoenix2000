@@ -29,12 +29,12 @@ namespace VIVES{
             Canvas(size_t width, size_t height);
         private:
             std::vector<std::vector<Color>> _buffer;
-            Color penColor=Color(255,255,255);
+            Color penColor=Color::WHITE;
         public:
             void clear(void);
             void pen_color(Color color);       //set the active drawing color
             void draw_pixel(Point point);
-            void horizontal_line(Point Origin,unsigned int length );
+            void horizontal_line(Point origin,unsigned int length );
             void vertical_line(Point origin, unsigned int length);
             void rectangle(Point origin,Point second);
             
