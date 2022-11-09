@@ -1,42 +1,45 @@
 //#################################
 //# Canvas
 //#################################
-//# - _buffer: std::array<std::array<Color>>
+//# - _buffer: std::Vector<std::vector<Color>>
 //# - penColor: Color
 //#################################
-//# + Canvas()
+//# + Canvas(with:size_t ,height :size_t)
 //# + clear()
 //# + pen_color(color: Color)       set the active drawing color
-//# + pixel(point: Point)
+//# + draw_pixel(point: Point)
 //# + horizontal_line(origin: Point, length: unsigned int)
 //# + vertical_line(origin: Point, length: unsigned int)
 //# + rectangle(origin: Point, second: Point)
-//# + buffer(): std::array<std::array<Color>>
-//################################
+//#
+//# + pixel(point: Point) :color
+//# + width() size_t
+//# + height() size_t
+//#################################
 #pragma once
 #include <iostream>
-#include <array>
-#include <string>
+#include <vector>
 
 #include "point.h"
 #include "color.h"
 
-#define COLS 100
-#define ROWS 10
 namespace VIVES{
     class Canvas{
-        private:
-            std::array<std::array<Color,COLS>,ROWS> _buffer;
-            Color penColor=Color(255,255,255);
-
         public:
-            Canvas(void);
+            Canvas(size_t width, size_t height);
+        private:
+            std::vector<std::vector<Color>> _buffer;
+            Color penColor=Color(255,255,255);
+        public:
             void clear(void);
             void pen_color(Color color);       //set the active drawing color
-            void pixel(Point point);
+            void draw_pixel(Point point);
             void horizontal_line(Point Origin,unsigned int length );
             void vertical_line(Point origin, unsigned int length);
             void rectangle(Point origin,Point second);
-            std::array<std::array<Color,COLS>,ROWS> buffer();
+            
+            Color pixel(Point point);
+            size_t width();
+            size_t height();
     };
 }

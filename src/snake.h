@@ -35,6 +35,7 @@ namespace VIVES{
             void down();
             void left();
             void right();
+            void start();
             void stop();
             void grow(unsigned int delta);
             std::vector<Point>body();

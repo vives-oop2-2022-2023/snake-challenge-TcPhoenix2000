@@ -2,23 +2,27 @@
 // run with :  ./bin/program
 #include <iostream>
 
-//temp include files array and string
-#include <array>
-#include <string>
-//temp////////////////////////////////
-
 #include "game.h"
-#include "terminal.h"
+//temp include of terminal unless using specified color in terminal before starting the game 
+//#include "terminal.h"
 
 
 using namespace std;
-using namespace Bios;
+//using namespace Bios;
+using namespace VIVES;
 
 int main(){
     cout << " Sliding Slug the snake based Game application has started" << endl;
-    
-    Terminal::foreground_color("green",5);
+    Game();
+    return 0;
+}
 
+/*
+    //temp include files array and string
+    #include <array>
+    #include <string>
+    //temp////////////////////////////////
+    ///// tried some stuff with 2d array
     std::array<std::array<std::string, COLS>, ROWS> _buffer;
         // Render table
             //┌───┐
@@ -52,5 +56,4 @@ int main(){
         for (int i = 0; i < COLS; i++)
         cout <<"─";
         cout <<"─"<< endl;//┘
-    return 0;
-}
+        */

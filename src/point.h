@@ -5,8 +5,9 @@
 //# + y: unsigned int
 //#################################
 #pragma once
+#include <cstddef>
 
 struct Point
 {
-    unsigned int x,y;
+    size_t x = 0 , y =0;
 };

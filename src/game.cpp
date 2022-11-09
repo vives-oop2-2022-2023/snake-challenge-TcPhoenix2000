@@ -1,21 +1,34 @@
 #include "game.h"
 
+
 using namespace std;
 using namespace VIVES;
 
-    Game::Game(){
+    Game::Game(void):_canvas(30,20){
+        start();
+    }
+    void Game::start(){
         StartupSign();
+        while (_isPlaying){
+            update();
+            draw();
+            render();
+            //sleep todo            
+        }
     }
     void Game::update(){//update entities
 
     }
     void Game::draw(){//draw entities on canvas
-        //head ▲ 
-        //body █
+    
     }
-    void Game::render(){//output canvas to renderer (terminal)
-        Canvas();
+    void Game::render(void){//output canvas to renderer (terminal)
+        text_renderer.render(&_canvas);
     }
+
+    //head @ 
+    //body █
+    
     void Game::StartupSign(){
         //when the game starts cool ascii title is displayed 
         //    _____  _  _      _  _                 _____  _

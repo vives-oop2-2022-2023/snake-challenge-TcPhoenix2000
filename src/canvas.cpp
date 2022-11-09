@@ -2,35 +2,42 @@
 
 using namespace std;
 using namespace VIVES;
-    //┌───┐
-    //| . |
-    //└───┘
 
-    Canvas::Canvas(void){
-        
+    Canvas::Canvas(size_t width, size_t height){
+
     }
     void Canvas::clear(void){
 
     }
     void Canvas::pen_color(Color color){
 
-    }       
-    void Canvas::pixel(Point point){
-        // pixel 
+    }       //set the active drawing color
+    void Canvas::draw_pixel(Point point){
+        _buffer[point.x][point.y]=penColor;
     }
     void Canvas::horizontal_line(Point Origin,unsigned int length ){
-        //horizontal ─── 
+
     }
     void Canvas::vertical_line(Point origin, unsigned int length){
-        //vertical │
 
     }
     void Canvas::rectangle(Point origin,Point second){
+
+    }
+    Color Canvas::pixel(Point point){
+
+    }
+    size_t Canvas::width(){
+        _buffer.size();
+    }
+    size_t Canvas::height(){
+        _buffer[0].size();
+    }
+    /*
+        //horizontal ─── 
+        //vertical │
         //top corners    ┌ ┐
         //bottom corners └ ┘
-    }
-    std::array<std::array<Color,COLS>,ROWS> Canvas::buffer(){
-        /*std::array<std::array<std::string, COLS>, ROWS> _buffer;
         // Render table
             //┌───┐
             //│...│
@@ -38,23 +45,13 @@ using namespace VIVES;
             //│...│
             //│...│
             //└───┘
-        cout <<"┌";
-        for (int i = 0; i < COLS; i++)
-        cout <<"─";
-        cout <<"┐"<< endl;
+        
 
         for (auto & line : _buffer) {
-            cout <<"│";
             for (auto & element : line) {
-            cout << element << ".";
-
+                cout << element << ".";
             }
-            cout << "│" << endl;
+            cout << endl;
         }
-
-        cout <<"└";
-        for (int i = 0; i < COLS; i++)
-        cout <<"─";
-        cout <<"┘"<< endl;*/
         return buffer();
-    }
+    }*/

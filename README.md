@@ -71,17 +71,20 @@ canvas represents the drawing canvas
 #################################
 # Canvas
 #################################
-# - _buffer: std::array<std::array<Color>>
+# - _buffer: std::Vector<std::vector<Color>>
 # - penColor: Color
 #################################
-# + Canvas()
+# + Canvas(with:size_t ,height :size_t)
 # + clear()
 # + pen_color(color: Color)       set the active drawing color
-# + pixel(point: Point)
+# + draw_pixel(point: Point)
 # + horizontal_line(origin: Point, length: unsigned int)
 # + vertical_line(origin: Point, length: unsigned int)
 # + rectangle(origin: Point, second: Point)
-# + buffer(): std::array<std::array<Color>>
+#
+# + pixel(point: Point) :color
+# + width() size_t
+# + height() size_t
 #################################
 ```
 
@@ -116,27 +119,34 @@ game represents the game instance
 # - snake: Snake
 # - canvas: Canvas
 # - isPlaying: bool
+# - walls: std::vector<Obstacle>
 #################################
 # + Game()
+# - create_walls(void)
 # - update()      update entities
 # - draw()        draw entities on canvas
 # - render()      output canvas to renderer (terminal)
 #################################
 ```
 
-Layout represents static indestructible walls
 
+obstacle
 ```
 #################################
-# Layout (may need a better name)
+# Obstacle
 #################################
-# - width: unsigned int
-# - height: unsigned int
-# - walls: std::vector<Point>
+# - point: Point
 #################################
-# + Layout(width: unsigned int, height: unsigned int)       setup perimeter
-# + update()                                                probable does nothing
-# + blocks(): std::vector<Point>
+# + obstacle(point: Point)
+#################################
+```
+
+text renderer
+```
+#################################
+# TextRenderer()
+#################################
+# + render(canvas * Canvas)      
 #################################
 ```
 
