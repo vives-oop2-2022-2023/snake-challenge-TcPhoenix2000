@@ -1,5 +1,5 @@
 .vscode/
 bin/
 /src/*.o
-/src/renderers/*.o
-/src/helpers/*.o
+src/renderers/*.o
+src/helpers/*.o
