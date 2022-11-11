@@ -104,6 +104,7 @@ snake represents the snake object
 # + down()
 # + left()
 # + right()
+# + start()
 # + stop()
 # + grow(delta: unsigned int)
 # + body(): std::vector<Point>

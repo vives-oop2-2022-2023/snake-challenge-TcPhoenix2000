@@ -6,13 +6,15 @@
 using namespace std;
 using namespace VIVES;
 const int ROWS=40;
-const int COLS=20;
+const int COLS=10;
     Game::Game(void):canvas(ROWS,COLS){
         StartupSign();
         std::this_thread::sleep_for(2000ms);
         start();
     }
     void Game::start(){
+
+        snake.start();
         while (_isPlaying){
             update();
             draw();
@@ -22,20 +24,20 @@ const int COLS=20;
         }
     }
     void Game::update(){//update entities
-
+        //snake.update();
     }
     void Game::draw(){//draw entities on canvas
         canvas.clear();
         canvas.pen_color(Color::RED);
-        canvas.draw_pixel({2,6});//temp for canvas.draw_pixel(snake.head())
+        canvas.draw_pixel(snake.head());
         canvas.pen_color(Color::GREEN);
-        canvas.draw_pixel({2,5});//temp canvas.draw_pixel(snake.body())
-        /*
+        //canvas.draw_pixel(snake.body());//temp canvas.draw_pixel(snake.body())
         std::vector<Point> Snake = snake.body();
         for (size_t i = 0; i < Snake.size(); i++) {
             canvas.draw_pixel(Snake[i]);
-        }*/
+        }
 
+        // working rectangle
         canvas.pen_color(Color::BLUE);
         canvas.rectangle({0, 0}, {ROWS-1,COLS-1});
     }

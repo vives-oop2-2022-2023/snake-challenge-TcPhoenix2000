@@ -18,7 +18,7 @@ namespace VIVES{
                 } else if (canvas->pixel({x,y}).equals(Color::BLUE)){
                     output << "#";
                 } else {
-                    output << ".";
+                    output << " ";
                 }
             }
             output << std::endl;

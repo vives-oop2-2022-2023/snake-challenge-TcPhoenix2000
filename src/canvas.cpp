@@ -24,22 +24,18 @@ using namespace VIVES;
         _buffer[point.x][point.y]=penColor;
     }
     void Canvas::horizontal_line(Point origin,unsigned int length ){
-        // origin.x en y moet je niet veranderen maar moet je gebruiken als startpunt
-       //horizontal_line kleurt een horizontale lijn vanaf point origin tot lengte ver,
         for(unsigned int i = origin.x; i < length; i++){
             origin.x = i;
             draw_pixel(origin);
         }
     }
     void Canvas::vertical_line(Point origin, unsigned int length){
-        //verticale lijn hetzelfde, 
         for(unsigned int i = origin.y; i < length; i++){
             origin.y = i;
             draw_pixel(origin);
         }
     }
     void Canvas::rectangle(Point origin,Point second){
-        //, een rectangle kleurt een rechthoek tussen 2 points,
         horizontal_line(origin,second.x);
         horizontal_line({origin.x,second.y},second.x);
         vertical_line(origin,second.y);
@@ -56,24 +52,15 @@ using namespace VIVES;
         return _buffer[0].size();
     }
     /*
-        //horizontal ─── 
-        //vertical │
-        //top corners    ┌ ┐
-        //bottom corners └ ┘
-        // Render table
-            //┌───┐
-            //│...│
-            //│...│
-            //│...│
-            //│...│
-            //└───┘
-        
-
-        for (auto & line : _buffer) {
-            for (auto & element : line) {
-                cout << element << ".";
-            }
-            cout << endl;
-        }
-        return buffer();
-    }*/
+    //horizontal ─── 
+    //vertical │
+    //top corners    ┌ ┐
+    //bottom corners └ ┘
+    // Render table
+        //┌───┐
+        //│...│
+        //│...│
+        //│...│
+        //│...│
+        //└───┘
+    */
