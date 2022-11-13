@@ -42,7 +42,11 @@ std::vector<Point>Snake::body(void){
 Point Snake::head(void){
     return snake.front();
 }
-
+/*
+        dit zou is aant begin van de functie een point opslaan van head()
+        dan aan gelang  de direction doe ik x of y +1
+        dan doe ik voor elk bodyelement zet ik gelijk aan het bodyelement voor hem 
+        en daarna zet ik head geklijk aan het punt dat in het begin opgelsagen is*/
         
 void Snake::update(){
     //
