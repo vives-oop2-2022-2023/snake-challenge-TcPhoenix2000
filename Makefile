@@ -1,7 +1,7 @@
-# The compiler to use
+# The CC to use
 CC=g++
 
-# Compiler flags
+# CC flags
 CFLAGS=-c -Wall -std=c++2a
     # -c: Compile or assemble the source files, but do not link.
     # The linking stage simply is not done.
@@ -19,26 +19,29 @@ CFLAGS=-c -Wall -std=c++2a
 # LIBS=
 
 # Name of executable output
-TARGET=program
+TARGET= program
 SRCDIR= src
-BUILDDIR=bin
-#TEMPSDIR=temps
+BUILDDIR= bin
+TEMPSDIR= temps
 
 OBJS := $(patsubst %.cpp,%.o,$(shell find $(SRCDIR) -name '*.cpp'))
 
 all: makebuildir $(TARGET)
 
-$(TARGET) : $(OBJS)
+$(TARGET) : $(OBJS) #MV
 	$(CC) $(LDFLAGS) -o $(BUILDDIR)/$@ $(OBJS) $(LIBS)
 
-%.o : %.cpp
+%.o: %.cpp
 	$(CC) $(CFLAGS) $< -o $@
 
-clean :
+clean:
 	rm -rf $(BUILDDIR)
-    #rm -rf $(TEMPSDIR)
+	rm -rf $(TEMPSDIR)
 	rm -f $(OBJS)
 
 makebuildir:
 	mkdir -p $(BUILDDIR)
-    #mkdir -p $(TEMPSDIR)
+	mkdir -p $(TEMPSDIR)
+
+MV:
+	mv $(SRCDIR)/*.o $(TEMPSDIR)
