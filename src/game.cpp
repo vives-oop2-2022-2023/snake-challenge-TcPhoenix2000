@@ -8,8 +8,8 @@ using namespace VIVES;
 const int ROWS=40;
 const int COLS=10;
     Game::Game(void):canvas(ROWS,COLS){
-        StartupSign();
-        std::this_thread::sleep_for(2000ms);
+        //StartupSign();
+        //std::this_thread::sleep_for(2000ms);
         start();
     }
     void Game::start(){
@@ -24,19 +24,20 @@ const int COLS=10;
         }
     }
     void Game::update(){//update entities
-        //snake.update();
+        snake.update();
     }
     void Game::draw(){//draw entities on canvas
         canvas.clear();
-        canvas.pen_color(Color::RED);
-        canvas.draw_pixel(snake.head());
+
         canvas.pen_color(Color::GREEN);
         //canvas.draw_pixel(snake.body());//temp canvas.draw_pixel(snake.body())
-        std::vector<Point> Snake = snake.body();
-        for (size_t i = 0; i < Snake.size(); i++) {
-            canvas.draw_pixel(Snake[i]);
+        std::vector<Point> snake_body = snake.body();
+        for (size_t i = 0; i < snake_body.size(); i++) {
+            canvas.draw_pixel(snake_body[i]);
         }
 
+        canvas.pen_color(Color::RED);
+        canvas.draw_pixel(snake.head());
         // working rectangle
         canvas.pen_color(Color::BLUE);
         canvas.rectangle({0, 0}, {ROWS-1,COLS-1});

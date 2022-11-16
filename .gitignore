@@ -3,4 +3,4 @@ bin/
 /src/*.o
 src/renderers/*.o
 src/helpers/*.o
-temps/
+temps/*.o

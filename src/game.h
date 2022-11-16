@@ -26,7 +26,7 @@ namespace VIVES{
             BitmapGenerator bitmap;
             TextRenderer text_renderer;
 
-            bool _isPlaying;
+            bool _isPlaying = true;
         public:
             Game(void);
             void start(void);
