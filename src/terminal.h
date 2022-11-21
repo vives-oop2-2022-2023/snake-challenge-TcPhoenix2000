@@ -3,6 +3,7 @@
 #include <iostream>
 #include <string>
 #include <map>
+#include <vector>
 
 namespace Bios {
 
@@ -70,6 +71,36 @@ namespace Bios {
 
     public:
       const static std::map<std::string,std::string> colors;
+
+    public:
+      enum class Key {
+        UP,
+        DOWN,
+        LEFT,
+        RIGHT,
+        ENTER,
+        ESC,
+        SPACE,
+        CTRL_C,
+        UNKNOWN,
+        NONE,
+      };
+
+#ifdef __linux__
+
+      public:
+        // A mapping of the Keys to their actual key codes
+        const static std::map<Key, std::vector<int>> key_map;
+
+      /**
+       * @brief Check if a key has been pressed on the keyboard.
+       * 
+       * @returns Key enum value or Key::NONE if none has been pressed
+       * 
+       */
+      static Key get_key_press(void);
+
+#endif
 
   };
 
