@@ -4,7 +4,7 @@ using namespace VIVES;
 
 Snake::Snake(void){
     //create snake of START_LENGTH
-    //snake.resize(START_LENGTH);
+    snake.resize(START_LENGTH);
     snake.push_back({2,2});
     snake.push_back({2,2});
     snake.push_back({2,2});
@@ -63,11 +63,12 @@ void Snake::update(){
             temp.x++;
         break;
     }
-    //for luss generates error 
-    /*for (int i = 1; i < (int) snake.size();i++)
+    //for loop generates error 
+    for (int i = (int) snake.size(); i != 0;i--)
     {
+        snake.erase(snake.begin()+1);
         snake[i]=snake[i-1];
         snake.push_back(snake[i]);
-    }*/
+    }
     snake.front()= temp;
 }
