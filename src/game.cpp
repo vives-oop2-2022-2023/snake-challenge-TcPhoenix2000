@@ -9,8 +9,7 @@ const int ROWS=40;
 const int COLS=10;
     Game::Game(void):canvas(ROWS,COLS){
         //StartupSign();
-        //std::this_thread::sleep_for(2000ms);
-        start();
+        //start();
     }
     void Game::start(){
 
@@ -68,4 +67,5 @@ const int COLS=10;
         cout << "  \u005c____/ |_||_| \u005c__,_||_||_| |_| \u005c__, | \u005c____/ |_| \u005c__,_| \u005c__, |" << endl;
         cout << "                                  __/ |                    __/ |" << endl;
         cout << "                                 |___/                    |___/ " << endl;
+        std::this_thread::sleep_for(2000ms);
     }
