@@ -4,10 +4,10 @@ using namespace VIVES;
 
 Snake::Snake(void){
     //create snake of START_LENGTH
-    snake.resize(START_LENGTH);
-    snake.push_back({2,2});
-    snake.push_back({2,2});
-    snake.push_back({2,2});
+    //snake.resize(START_LENGTH);
+    for (unsigned int i = 0; i < START_LENGTH; i++){
+        snake.push_back({2,2});
+    }
     down();
     if (isMoving==true){
         update();
@@ -64,11 +64,11 @@ void Snake::update(){
         break;
     }
     //for loop generates error 
-    for (int i = (int) snake.size(); i != 0;i--)
+    for (int i = (int) snake.size(); i > 0;i--)
     {
-        snake.erase(snake.begin()+1);
+        //snake.erase(snake.begin()+1);
         snake[i]=snake[i-1];
-        snake.push_back(snake[i]);
+        //snake.push_back(snake[i]);
     }
     snake.front()= temp;
 }
