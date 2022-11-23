@@ -1,10 +1,13 @@
 #include "game.h"
+#include "terminal.h"
 #include <iostream>
 #include <chrono>
 #include <thread>
 
 using namespace std;
+using namespace Bios;
 using namespace VIVES;
+
 const int ROWS=40;
 const int COLS=10;
     Game::Game(void):canvas(ROWS,COLS){
@@ -12,6 +15,11 @@ const int COLS=10;
         //start();
     }
     void Game::start(){
+        Terminal::flush();
+        Terminal::clear();
+        Terminal::hide_cursor();
+        Terminal::background_color("black");
+        Terminal::foreground_color("yellow", true);
 
         snake.start();
         while (_isPlaying){
@@ -23,6 +31,24 @@ const int COLS=10;
         }
     }
     void Game::update(){//update entities
+        //#this function generates mem rerror 
+        // while (true) {
+        //     Terminal::Key key = Terminal::get_key_press();
+        //     if (key != Terminal::Key::NONE) {
+        //     Terminal::clear();
+        //     switch (key) {
+        //         case Terminal::Key::LEFT:  snake.left();  break;
+        //         case Terminal::Key::RIGHT: snake.right(); break;
+        //         case Terminal::Key::UP:    snake.up();    break;
+        //         case Terminal::Key::DOWN:  snake.down();  break;
+        //         case Terminal::Key::ENTER: cout << "You pressed ENTER" << endl; break;
+        //         case Terminal::Key::SPACE: cout << "You pressed SPACE" << endl; break;
+        //         case Terminal::Key::ESC: cout << "You pressed ESC" << endl; break;
+        //     }
+        //     }
+
+        //     if (key == Terminal::Key::CTRL_C) exit(0);
+        // }
         snake.update();
     }
     void Game::draw(){//draw entities on canvas
