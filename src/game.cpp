@@ -9,10 +9,8 @@ using namespace Bios;
 using namespace VIVES;
 
 const int ROWS=40;
-const int COLS=10;
+const int COLS=15;
     Game::Game(void):canvas(ROWS,COLS){
-        //StartupSign();
-        //start();
     }
     void Game::start(){
         Terminal::flush();
@@ -39,9 +37,9 @@ const int COLS=10;
                     case Terminal::Key::RIGHT: snake.right(); break;
                     case Terminal::Key::UP:    snake.up();    break;
                     case Terminal::Key::DOWN:  snake.down();  break;
-                    //case Terminal::Key::ENTER:/*do something*/; break;
-                    //case Terminal::Key::SPACE: cout << "You pressed SPACE" ; break;
-                    case Terminal::Key::ESC: _isPlaying = false; snake.stop(); break;
+                    case Terminal::Key::ENTER: /*do something*/ ; break;
+                    case Terminal::Key::SPACE: /*do something*/ ; break;
+                    case Terminal::Key::ESC: snake.stop(); _isPlaying = false; break;
                 }
             }
 
@@ -66,8 +64,8 @@ const int COLS=10;
         canvas.rectangle({0, 0}, {ROWS-1,COLS-1});
     }
     void Game::render(void){//output canvas to renderer (terminal)
-        //bitmap.render(&canvas);
         text_renderer.render(&canvas);
+        //bitmap.render(&canvas);
     }
 
     //head @ 

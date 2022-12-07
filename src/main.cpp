@@ -8,8 +8,8 @@ using namespace VIVES;
 
 Game game;
 int main(){
-    cout << " Sliding Slug the snake based Game application has started" << endl;
-    cout << "Hit CTRL-C to stop." << endl;
+    cout << " Sliding Slug the snake based Game application has started " << endl;
+    cout << " Hit CTRL-C to stop. " << endl;
     game.StartupSign();
 
     game.start();
