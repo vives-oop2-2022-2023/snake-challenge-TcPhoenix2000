@@ -30,9 +30,7 @@ const int COLS=10;
             std::this_thread::sleep_for(100ms);           
         }
     }
-    void Game::update(){//update entities
-        //#this function generates mem rerror 
-        
+    void Game::update(){//update entities 
             Terminal::Key key = Terminal::get_key_press();
             if (key != Terminal::Key::NONE) {
                 //Terminal::clear();
@@ -41,11 +39,9 @@ const int COLS=10;
                     case Terminal::Key::RIGHT: snake.right(); break;
                     case Terminal::Key::UP:    snake.up();    break;
                     case Terminal::Key::DOWN:  snake.down();  break;
-                    /*  
-                        case Terminal::Key::ENTER:; break;
-                        case Terminal::Key::SPACE: cout << "You pressed SPACE" ; break;
-                        case Terminal::Key::ESC: cout << "You pressed ESC" ; break;
-                    */
+                    //case Terminal::Key::ENTER:/*do something*/; break;
+                    //case Terminal::Key::SPACE: cout << "You pressed SPACE" ; break;
+                    case Terminal::Key::ESC: _isPlaying = false; snake.stop(); break;
                 }
             }
 
@@ -70,12 +66,12 @@ const int COLS=10;
         canvas.rectangle({0, 0}, {ROWS-1,COLS-1});
     }
     void Game::render(void){//output canvas to renderer (terminal)
-        //BitmapRenderer(size_t width ,size_t height ,std::string filename);
+        //bitmap.render(&canvas);
         text_renderer.render(&canvas);
     }
 
     //head @ 
-    //body █
+    //body +
     
     void Game::StartupSign(){
         //when the game starts cool ascii title is displayed 

@@ -15,7 +15,7 @@
 #pragma once
 #include "snake.h"
 #include "canvas.h"
-#include "helpers/bitmap_generator.h"
+#include "renderers/bitmap_renderer.h"
 #include "renderers/TextRenderer.h"
 
 namespace VIVES{
@@ -23,7 +23,7 @@ namespace VIVES{
         private:
             Snake snake;
             Canvas canvas;
-            BitmapGenerator bitmap;
+            //BitmapRenderer bitmap;
             TextRenderer text_renderer;
 
             bool _isPlaying = true;
