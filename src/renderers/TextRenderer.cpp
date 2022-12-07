@@ -14,14 +14,14 @@ namespace VIVES{
                 if (canvas->pixel({x,y}).equals(Color::RED)){
                     output << "@";
                 } else if (canvas->pixel({x,y}).equals(Color::GREEN)){
-                    output << "█";
+                    output << "+";
                 } else if (canvas->pixel({x,y}).equals(Color::BLUE)){
                     output << "#";
                 } else {
                     output << " ";
                 }
             }
-            output << std::endl;
+            output << "\r\n";
         }
         system("clear");
         std::cout << output.str();

@@ -33,23 +33,23 @@ const int COLS=10;
     void Game::update(){//update entities
         //#this function generates mem rerror 
         
-            // Terminal::Key key = Terminal::get_key_press();
-            // if (key != Terminal::Key::NONE) {
-            //     //Terminal::clear();
-            //     switch (key) {
-            //         case Terminal::Key::LEFT:  snake.left();  break;
-            //         case Terminal::Key::RIGHT: snake.right(); break;
-            //         case Terminal::Key::UP:    snake.up();    break;
-            //         case Terminal::Key::DOWN:  snake.down();  break;
-            //         /*  
-            //             case Terminal::Key::ENTER:; break;
-            //             case Terminal::Key::SPACE: cout << "You pressed SPACE" ; break;
-            //             case Terminal::Key::ESC: cout << "You pressed ESC" ; break;
-            //         */
-            //     }
-            // }
+            Terminal::Key key = Terminal::get_key_press();
+            if (key != Terminal::Key::NONE) {
+                //Terminal::clear();
+                switch (key) {
+                    case Terminal::Key::LEFT:  snake.left();  break;
+                    case Terminal::Key::RIGHT: snake.right(); break;
+                    case Terminal::Key::UP:    snake.up();    break;
+                    case Terminal::Key::DOWN:  snake.down();  break;
+                    /*  
+                        case Terminal::Key::ENTER:; break;
+                        case Terminal::Key::SPACE: cout << "You pressed SPACE" ; break;
+                        case Terminal::Key::ESC: cout << "You pressed ESC" ; break;
+                    */
+                }
+            }
 
-            // if (key == Terminal::Key::CTRL_C) exit(0);
+            if (key == Terminal::Key::CTRL_C) exit(0);
         
         snake.update();
     }
@@ -70,7 +70,7 @@ const int COLS=10;
         canvas.rectangle({0, 0}, {ROWS-1,COLS-1});
     }
     void Game::render(void){//output canvas to renderer (terminal)
-        //bitmap.generate( png,);
+        //BitmapRenderer(size_t width ,size_t height ,std::string filename);
         text_renderer.render(&canvas);
     }
 
