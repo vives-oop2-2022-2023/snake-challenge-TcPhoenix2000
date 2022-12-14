@@ -16,7 +16,9 @@ CFLAGS=-c -Wall -std=c++2a
 # LDFLAGS=
 
 # Libraries
-# LIBS=
+LIBS=-lCppLinuxSerial
+# dependencies
+# 	https://github.com/gbmhunter/CppLinuxSerial.git
 
 # Name of executable output
 TARGET= program
