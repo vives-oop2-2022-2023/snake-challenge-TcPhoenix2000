@@ -1,13 +1,15 @@
 // compile with make
 // run with :  ./bin/program
 #include <iostream>
+#include "terminal.h"
 #include "game.h" 
 
 using namespace std;
-using namespace VIVES;
 
-Game game;
+VIVES::Game game;
 int main(){
+    Bios::Terminal::flush();
+    Bios::Terminal::clear();
     cout << " Sliding Slug the snake based Game application has started " << endl;
     cout << " Hit CTRL-C to stop. " << endl;
     game.StartupSign();
