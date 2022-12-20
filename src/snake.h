@@ -41,6 +41,7 @@ namespace VIVES{
             void grow(unsigned int delta);
             std::vector<Point>body();
             Point head();
+            Point nextSnakeHeadPosition();
             void update();
     };
 }

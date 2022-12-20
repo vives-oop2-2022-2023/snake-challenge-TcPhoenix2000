@@ -45,8 +45,7 @@ Point Snake::head(void){
     return snake.front();
 }
         
-void Snake::update(){
-    
+Point Snake::nextSnakeHeadPosition(){
     Point temp = head();
 
     switch (direction){
@@ -63,6 +62,11 @@ void Snake::update(){
             temp.x++;
         break;
     }
+    return temp;
+}
+void Snake::update(){
+    
+    nextSnakeHeadPosition();
     //for loop generates error 
     for (int i = (int) snake.size(); i > 0;i--)
     {
@@ -70,5 +74,5 @@ void Snake::update(){
         snake[i]=snake[i-1];
         //snake.push_back(snake[i]);
     }
-    snake.front()= temp;
+    snake.front()= nextSnakeHeadPosition();
 }
