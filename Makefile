@@ -16,7 +16,7 @@ CFLAGS=-c -Wall -std=c++2a
 # LDFLAGS=
 
 # Libraries
-LIBS=-lCppLinuxSerial
+#LIBS=-lCppLinuxSerial
 # dependencies
 # 	https://github.com/gbmhunter/CppLinuxSerial.git
 
