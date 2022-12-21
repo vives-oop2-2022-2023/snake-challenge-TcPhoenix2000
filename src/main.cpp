@@ -1,7 +1,7 @@
 // compile with make
 // run with :  ./bin/program
 #include <iostream>
-#include "terminal.h"
+#include "./lib/terminal.h"
 #include "game.h" 
 
 using namespace std;

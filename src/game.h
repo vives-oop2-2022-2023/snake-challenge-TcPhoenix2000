@@ -35,5 +35,6 @@ namespace VIVES{
             void update(void);      //update entities
             void draw(void);        //draw entities on canvas
             void render(void);      //output canvas to renderer (terminal)
+            void collisionDetect(void); // 
     };
 }

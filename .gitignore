@@ -3,5 +3,6 @@ bin/
 /src/*.o
 src/renderers/*.o
 src/helpers/*.o
+src/game_objects/*.o
 src/lib/*.o
 temps/*.o

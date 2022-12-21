@@ -32,7 +32,7 @@ void Snake::stop(){
     isMoving= false;
 }
 void Snake::grow(unsigned int delta){
-    
+    START_LENGTH = START_LENGTH + delta*1;
 }
 std::vector<Point>Snake::body(void){
     std::vector<Point> snakeBody;

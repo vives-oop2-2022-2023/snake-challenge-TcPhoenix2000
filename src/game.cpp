@@ -1,11 +1,10 @@
 #include "game.h"
-#include "terminal.h"
+#include "./lib/terminal.h"
 #include <iostream>
 #include <chrono>
 #include <thread>
 
 using namespace std;
-using namespace Bios;
 using namespace VIVES;
 
 const int ROWS=40;
@@ -13,37 +12,45 @@ const int COLS=15;
     Game::Game(void):canvas(ROWS,COLS){
     }
     void Game::start(){
-        Terminal::flush();
-        Terminal::clear();
-        Terminal::hide_cursor();
-        Terminal::background_color("black");
-        Terminal::foreground_color("yellow", true);
+        Bios::Terminal::flush();
+        Bios::Terminal::clear();
+        Bios::Terminal::hide_cursor();
 
         snake.start();
         while (_isPlaying){
             update();
             draw();
+            collisionDetect();
             render();
             //sleep 
             std::this_thread::sleep_for(100ms);           
         }
     }
+    void Game::collisionDetect(){
+        // for (auto &obstacle : obstacles) {
+            //     GameObject tempObject = {nextHeadPos.x, nextHeadPos.y};
+            //     if (obstacle.collidesWith(tempObject)) {
+            //     // Handle the collision (e.g. end the game or increase the snake's length)
+            //             
+            //     }
+            // }
+    }
     void Game::update(){//update entities 
-            Terminal::Key key = Terminal::get_key_press();
-            if (key != Terminal::Key::NONE) {
+            Bios::Terminal::Key key = Bios::Terminal::get_key_press();
+            if (key != Bios::Terminal::Key::NONE) {
                 //Terminal::clear();
                 switch (key) {
-                    case Terminal::Key::LEFT:  snake.left();  break;
-                    case Terminal::Key::RIGHT: snake.right(); break;
-                    case Terminal::Key::UP:    snake.up();    break;
-                    case Terminal::Key::DOWN:  snake.down();  break;
-                    case Terminal::Key::ENTER: /*do something*/ ; break;
-                    case Terminal::Key::SPACE: /*do something*/ ; break;
-                    case Terminal::Key::ESC: snake.stop(); _isPlaying = false; break;
+                    case Bios::Terminal::Key::LEFT:  snake.left();  break;
+                    case Bios::Terminal::Key::RIGHT: snake.right(); break;
+                    case Bios::Terminal::Key::UP:    snake.up();    break;
+                    case Bios::Terminal::Key::DOWN:  snake.down();  break;
+                    case Bios::Terminal::Key::ENTER: /*do something*/ ; break;
+                    case Bios::Terminal::Key::SPACE: /*do something*/ ; break;
+                    case Bios::Terminal::Key::ESC: snake.stop(); _isPlaying = false; break;
                 }
             }
 
-            if (key == Terminal::Key::CTRL_C) exit(0);
+            if (key == Bios::Terminal::Key::CTRL_C) exit(0);
         
         snake.update();
     }
@@ -56,7 +63,6 @@ const int COLS=15;
         for (size_t i = 0; i < snake_body.size(); i++) {
             canvas.draw_pixel(snake_body[i]);
         }
-
         canvas.pen_color(Color::RED);
         canvas.draw_pixel(snake.head());
         // working rectangle
@@ -67,12 +73,11 @@ const int COLS=15;
         text_renderer.render(&canvas);
         //bitmap.render(&canvas);
     }
-
-    //head @ 
-    //body +
     
+    /* when the game starts cool ascii title is displayed */
     void Game::StartupSign(){
-        //when the game starts cool ascii title is displayed 
+        Bios::Terminal::background_color("black");
+        Bios::Terminal::foreground_color("yellow", true);
         //   _____  _  _      _  _                 _____  _
         //  /  ___|| |(_)    | |(_)               /  ___|| |
         //  \ `--. | | _   __| | _  _ __    __ _  \ `--. | | _   _   __ _

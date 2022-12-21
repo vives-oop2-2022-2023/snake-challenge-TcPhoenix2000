@@ -1,5 +1,5 @@
 #include "TextRenderer.h"
-
+#include "../lib/terminal.h"
 #include <sstream>
 #include <iostream>
 
@@ -12,10 +12,13 @@ namespace VIVES{
             
                 //color to  string?
                 if (canvas->pixel({x,y}).equals(Color::RED)){
+                    //Bios::Terminal::foreground_color("red", true);
                     output << "@";
                 } else if (canvas->pixel({x,y}).equals(Color::GREEN)){
+                    //Bios::Terminal::foreground_color("green", true);
                     output << "+";
                 } else if (canvas->pixel({x,y}).equals(Color::BLUE)){
+                    Bios::Terminal::foreground_color("green", true);
                     output << "#";
                 } else {
                     output << " ";

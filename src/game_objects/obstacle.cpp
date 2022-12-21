@@ -1,6 +1,6 @@
 #include "obstacle.h"
 
-using namespace VIVES;
+using namespace GameObject;
 Obstacle::Obstacle(Point point){
     
 }
