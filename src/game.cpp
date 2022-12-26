@@ -76,7 +76,6 @@ const int COLS=15;
     
     /* when the game starts cool ascii title is displayed */
     void Game::StartupSign(){
-        Bios::Terminal::background_color("black");
         Bios::Terminal::foreground_color("yellow", true);
         //   _____  _  _      _  _                 _____  _
         //  /  ___|| |(_)    | |(_)               /  ___|| |

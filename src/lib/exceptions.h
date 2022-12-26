@@ -16,4 +16,13 @@ namespace Linked_List::Exception{
         }
         
     };
-};
+    class NullPointerException: public std::runtime_error {
+        private:
+            /* data */
+        public:
+            NullPointerException(std::string message = "null pointer exception") 
+            : runtime_error(message) {
+                
+            }
+        };
+    }
