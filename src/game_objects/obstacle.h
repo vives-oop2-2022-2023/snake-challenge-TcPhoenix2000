@@ -7,14 +7,12 @@
 // #################################
 #pragma once
 #include "../point.h"
-namespace GameObject{
-    class Obstacle 
-    {
-        private:
-            Point point;
-        public:
-            Obstacle(Point point); 
-        public:
+namespace GameObject {
+    class Obstacle {
+    private:
+        Point point;
+    public:
+        Obstacle(Point point);
+        virtual bool collidesWith(Obstacle& other);
     };
-
 }
