@@ -74,7 +74,6 @@ const int COLS=15;//vertical
             canvas.pen_color(Color::WHITE);
             canvas.draw_pixel(edibles[i].point());
         }
-
     }
     /* when the game starts cool ascii title is displayed */
     void Game::StartupSign(){

@@ -42,6 +42,8 @@ OptionsMenu::OptionsMenu() {
                 break;
             case 2:
                 // Return to the main menu
+                optionsMenu.clear();
+                displayMenu();
                 return;
         }
     //}
@@ -87,6 +89,7 @@ displayMenu::displayMenu() {
                 game.start();
                 break;
             case 2:
+                menu.clear();
                 // Quit the program
                 return;
         }
