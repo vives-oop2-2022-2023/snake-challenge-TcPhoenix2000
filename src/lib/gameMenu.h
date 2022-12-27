@@ -1,4 +1,3 @@
-// gameMenu.h
 #pragma once
 
 #include <iostream>
@@ -6,19 +5,23 @@
 #include "linkedList.h"
 #include "../game.h"
 
-namespace Linked_List::gameMenu {
+#include "../renderers/TextRenderer.h"
+#include "../renderers/bitmap_renderer.h"
+#include "../renderers/sensehatRenderer.h"
+
+namespace Linked_List {
     class displayMenu {
     private:
-        linkedList<std::string> menu;
         VIVES::Game game;
+        linkedList<std::string> menu;
     public:
         displayMenu();
     };
-
-    class displayOptionsMenu {
+    class OptionsMenu {
     private:
+        VIVES::Game game;
         linkedList<std::string> optionsMenu;
     public:
-        displayOptionsMenu();
-    };
+        OptionsMenu();
+    };    
 }

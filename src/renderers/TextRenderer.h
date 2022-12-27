@@ -8,12 +8,11 @@
 #include "../canvas.h"
 #include "../point.h"
 
-namespace VIVES{
-    class TextRenderer
-    {
-        public:
-            void render(Canvas * canvas);
+#include "render_interface.h"
+
+namespace VIVES {
+    class TextRenderer : public IRender {
+    public:
+        void render(Canvas * canvas);
     };
-    
-    
 }

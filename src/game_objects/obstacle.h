@@ -6,15 +6,14 @@
 // # + obstacle(point: Point)
 // #################################
 #pragma once
-#include "../point.h"
-namespace GameObject{
-    class Obstacle 
-    {
+#include "gameObject.h"
+
+namespace VIVES{
+    class Obstacle :public GameObject{
         private:
-            Point point;
+            Point _point;
         public:
             Obstacle(Point point); 
-        public:
     };
-
+    inline Obstacle::Obstacle(Point point):GameObject(point){}
 }

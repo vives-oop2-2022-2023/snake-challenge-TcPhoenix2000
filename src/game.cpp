@@ -1,5 +1,6 @@
 #include "game.h"
 #include "./lib/terminal.h"
+#include "./lib/gameMenu.h"
 #include <iostream>
 #include <chrono>
 #include <thread>
@@ -7,53 +8,53 @@
 using namespace std;
 using namespace VIVES;
 
-const int ROWS=40;
-const int COLS=15;
+const int ROWS=40;//horizontal
+const int COLS=15;//vertical
     Game::Game(void):canvas(ROWS,COLS){
     }
     void Game::start(){
         Bios::Terminal::flush();
         Bios::Terminal::clear();
-        Bios::Terminal::hide_cursor();
 
+        createEdible();
+        walls();
         snake.start();
-        while (_isPlaying){
+        while (_isPlaying==true){
+            keyCheck();
             update();
             draw();
-            collisionDetect();
-            render();
+            renderer();
             //sleep 
-            std::this_thread::sleep_for(100ms);           
+            std::this_thread::sleep_for(500ms);           
         }
     }
-    void Game::collisionDetect(){
-        // for (auto &obstacle : obstacles) {
-            //     GameObject tempObject = {nextHeadPos.x, nextHeadPos.y};
-            //     if (obstacle.collidesWith(tempObject)) {
-            //     // Handle the collision (e.g. end the game or increase the snake's length)
-            //             
-            //     }
-            // }
+    void Game::stop(){
+        snake.stop();
+        _isPlaying=false;
+        Bios::Terminal::flush();
+        Bios::Terminal::clear();
+        Linked_List::displayMenu();
     }
-    void Game::update(){//update entities 
-            Bios::Terminal::Key key = Bios::Terminal::get_key_press();
-            if (key != Bios::Terminal::Key::NONE) {
-                //Terminal::clear();
-                switch (key) {
-                    case Bios::Terminal::Key::LEFT:  snake.left();  break;
-                    case Bios::Terminal::Key::RIGHT: snake.right(); break;
-                    case Bios::Terminal::Key::UP:    snake.up();    break;
-                    case Bios::Terminal::Key::DOWN:  snake.down();  break;
-                    case Bios::Terminal::Key::ENTER: /*do something*/ ; break;
-                    case Bios::Terminal::Key::SPACE: /*do something*/ ; break;
-                    case Bios::Terminal::Key::ESC: snake.stop(); _isPlaying = false; break;
-                }
+    void Game::update(){//update entities
+        for(size_t i=0; i<edibles.size(); i++){
+            if(collisionDetection::detectCollision(snake.nextSnakeHeadPosition(),edibles[i])){
+                snake.grow(edibles[i].growth());
+                edibles.erase(edibles.begin() + i);
+                createEdible();
             }
-
-            if (key == Bios::Terminal::Key::CTRL_C) exit(0);
-        
+        }
+        for(size_t i=0; i<_walls.size(); i++){
+            if(collisionDetection::detectCollision(snake.nextSnakeHeadPosition(),_walls[i])){
+                stop();
+            }
+        }
         snake.update();
     }
+
+    void Game::renderer(void){//output canvas to renderer (terminal)
+        _render->render(&canvas);
+    }
+
     void Game::draw(){//draw entities on canvas
         canvas.clear();
 
@@ -68,14 +69,21 @@ const int COLS=15;
         // working rectangle
         canvas.pen_color(Color::BLUE);
         canvas.rectangle({0, 0}, {ROWS-1,COLS-1});
+
+        for (size_t i = 0; i < edibles.size(); i++) {
+            canvas.pen_color(Color::WHITE);
+            canvas.draw_pixel(edibles[i].point());
+        }
+
     }
-    void Game::render(void){//output canvas to renderer (terminal)
-        text_renderer.render(&canvas);
-        //bitmap.render(&canvas);
-    }
-    
     /* when the game starts cool ascii title is displayed */
     void Game::StartupSign(){
+        Bios::Terminal::flush();
+        Bios::Terminal::clear();
+        Bios::Terminal::background_color("black");
+        Bios::Terminal::foreground_color("white", true);
+        cout << " Sliding Slug the snake based Game application has started " <<"\r\n";
+        cout << " Hit CTRL-C to stop. " <<"\r\n";
         Bios::Terminal::foreground_color("yellow", true);
         //   _____  _  _      _  _                 _____  _
         //  /  ___|| |(_)    | |(_)               /  ___|| |
@@ -85,13 +93,56 @@ const int COLS=15;
         //  \____/ |_||_| \__,_||_||_| |_| \__, | \____/ |_| \__,_| \__, |
         //                                  __/ |                    __/ |
         //                                 |___/                    |___/
-        cout << "   _____  _  _      _  _                 _____  _               " << endl;
-        cout << "  /  ___|| |(_)    | |(_)               /  ___|| |              " << endl;
-        cout << "  \u005c `--. | | _   __| | _  _ __    __ _  \u005c `--. | | _   _   __ _ " << endl;
-        cout << "   `--. \u005c| || | / _` || || '_ \u005c  / _` |  `--. \u005c| || | | | / _` |" << endl;
-        cout << "  /\u005c__/ /| || || (_| || || | | || (_| | /\u005c__/ /| || |_| || (_| |" << endl;
-        cout << "  \u005c____/ |_||_| \u005c__,_||_||_| |_| \u005c__, | \u005c____/ |_| \u005c__,_| \u005c__, |" << endl;
-        cout << "                                  __/ |                    __/ |" << endl;
-        cout << "                                 |___/                    |___/ " << endl;
-        std::this_thread::sleep_for(2000ms);
+        cout << "   _____  _  _      _  _                 _____  _               " <<"\r\n";
+        cout << "  /  ___|| |(_)    | |(_)               /  ___|| |              " <<"\r\n";
+        cout << "  \u005c `--. | | _   __| | _  _ __    __ _  \u005c `--. | | _   _   __ _ " <<"\r\n";
+        cout << "   `--. \u005c| || | / _` || || '_ \u005c  / _` |  `--. \u005c| || | | | / _` |" <<"\r\n";
+        cout << "  /\u005c__/ /| || || (_| || || | | || (_| | /\u005c__/ /| || |_| || (_| |" <<"\r\n";
+        cout << "  \u005c____/ |_||_| \u005c__,_||_||_| |_| \u005c__, | \u005c____/ |_| \u005c__,_| \u005c__, |" <<"\r\n";
+        cout << "                                  __/ |                    __/ |" <<"\r\n";
+        cout << "                                 |___/                    |___/ " <<"\r\n";
+        Bios::Terminal::foreground_color("green", true);
+    }
+    void Game::keyCheck(){
+        Bios::Terminal::Key key = Bios::Terminal::get_key_press();
+            if (key != Bios::Terminal::Key::NONE) {
+                //Terminal::clear();
+                switch (key) {
+                    case Bios::Terminal::Key::LEFT:  snake.left();  break;
+                    case Bios::Terminal::Key::RIGHT: snake.right(); break;
+                    case Bios::Terminal::Key::UP:    snake.up();    break;
+                    case Bios::Terminal::Key::DOWN:  snake.down();  break;
+                    case Bios::Terminal::Key::ENTER: /*do something*/ ; break;
+                    case Bios::Terminal::Key::SPACE: stop(); break;
+                    case Bios::Terminal::Key::ESC: stop(); break;
+                }
+            }
+
+            if (key == Bios::Terminal::Key::CTRL_C) exit(0);
+    }
+    void Game::walls(){
+        // Add corners to the walls
+        _walls.push_back(Obstacle({0, 0}));
+        _walls.push_back(Obstacle({0, ROWS - 1}));
+        _walls.push_back(Obstacle({COLS - 1, 0}));
+        _walls.push_back(Obstacle({COLS - 1, ROWS - 1}));
+
+        // Insert walls at the edge of the square
+        for (size_t i = 0; i < (ROWS); i++) {
+            _walls.push_back(Obstacle({0, i}));
+            _walls.push_back(Obstacle({ROWS - 1, i}));
+        }
+        for (size_t i = 1; i < (COLS - 1); i++) {
+            _walls.push_back(Obstacle({i, 0}));
+            _walls.push_back(Obstacle({i, COLS - 1}));
+        }
+    }
+    void Game::setRenderer(IRender * render){
+        _render=render;
+    }
+    void Game::createEdible(){
+        size_t x = (rand()% COLS-2);
+        size_t y = (rand()% ROWS-2);
+        edibles.push_back(Edible({x,y},1));
+
     }

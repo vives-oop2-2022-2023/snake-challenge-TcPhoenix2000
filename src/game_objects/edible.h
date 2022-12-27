@@ -1,9 +1,18 @@
 #pragma once
-#include "obstacle.h"
-namespace GameObject{
-class Edible : public Obstacle {
-  public:
-    
-    // Add other member variables and functions specific to the edibles
+#include "gameObject.h"
+namespace VIVES{
+class Edible : public GameObject {
+    private:
+        Point _point;
+        int growth_delta = 1;
+    public:
+        Edible(Point point, int growth_delta);
+        int growth();
 };
+    inline Edible::Edible(Point point,int growth):GameObject(point){
+        growth_delta = growth;
+    }
+    inline int Edible::growth(){
+        return growth_delta;
+    }
 }

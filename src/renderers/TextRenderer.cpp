@@ -9,16 +9,14 @@ namespace VIVES{
         std::stringstream output;
         for(size_t y = 0; y < canvas->height();y++){
             for(size_t x = 0; x < canvas->width();x++){
-            
-                //color to  string?
+
                 if (canvas->pixel({x,y}).equals(Color::RED)){
-                    //Bios::Terminal::foreground_color("red", true);
                     output << "@";
                 } else if (canvas->pixel({x,y}).equals(Color::GREEN)){
-                    //Bios::Terminal::foreground_color("green", true);
                     output << "+";
-                } else if (canvas->pixel({x,y}).equals(Color::BLUE)){
-                    Bios::Terminal::foreground_color("green", true);
+                }else if (canvas->pixel({x,y}).equals(Color::WHITE)){
+                    output << "0";
+                }else if (canvas->pixel({x,y}).equals(Color::BLUE)){
                     output << "#";
                 } else {
                     output << " ";
