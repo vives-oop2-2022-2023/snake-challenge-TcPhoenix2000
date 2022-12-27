@@ -15,15 +15,12 @@
 #pragma once
 #include "snake.h"
 #include "canvas.h"
-#include "./game_objects/obstacle.h"
-//#include "./renderers/cpp_render_interface.h"
-#include "./renderers/bitmap_renderer.h"
-#include "./renderers/TextRenderer.h"
+#include "renderers/bitmap_renderer.h"
+#include "renderers/TextRenderer.h"
 
 namespace VIVES{
     class Game{
         private:
-            std::vector<GameObject::Obstacle> obstacles;
             Snake snake;
             Canvas canvas;
             //BitmapRenderer bitmap;

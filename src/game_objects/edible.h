@@ -1,10 +1,9 @@
 #pragma once
 #include "obstacle.h"
-
-namespace GameObject {
+namespace GameObject{
 class Edible : public Obstacle {
-public:
-Edible(Point point);
-bool collidesWith(Obstacle& other) override;
+  public:
+    
+    // Add other member variables and functions specific to the edibles
 };
 }

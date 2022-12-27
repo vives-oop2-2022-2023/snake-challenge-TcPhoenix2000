@@ -1,13 +1,11 @@
 #include "game.h"
 #include "./lib/terminal.h"
-#include "./game_objects/edible.h"
 #include <iostream>
 #include <chrono>
 #include <thread>
 
 using namespace std;
 using namespace VIVES;
-using namespace GameObject;
 
 const int ROWS=40;
 const int COLS=15;
@@ -21,53 +19,22 @@ const int COLS=15;
         snake.start();
         while (_isPlaying){
             update();
-            collisionDetect();
             draw();
+            collisionDetect();
             render();
             //sleep 
             std::this_thread::sleep_for(100ms);           
         }
     }
     void Game::collisionDetect(){
-        Point nextHeadPos = snake.nextSnakeHeadPosition();
-        // Check for collision with walls
-        if (nextHeadPos.x < 0 || nextHeadPos.x >= COLS || nextHeadPos.y < 0 || nextHeadPos.y >= ROWS) {
-            // Handle wall collision (e.g. end the game)
-            snake.stop();
-        }
-
-        // Check for collision with snake body
-        std::vector<Point> snake_body = snake.body();
-        for (int i = 1; i < (int)snake_body.size(); i++) {
-            if (nextHeadPos.x == snake_body[i].x && nextHeadPos.y == snake_body[i].y) {
-                // Handle snake body collision (e.g. end the game)
-                snake.stop();
-            }
-        }
-
-        // Check for collision with obstacles
-        for (auto &obstacle : obstacles) {
-            Obstacle* tempObject = new Obstacle(nextHeadPos);
-            if (obstacle.collidesWith(*tempObject)) {
-            // Collision detected
-            }
-            delete tempObject;
-        }
-
-        // Check for collision with edibles
-        for (auto &edible : obstacles) {
-        // Declare and construct a new Edible object
-        Edible *tempObject = new Edible(nextHeadPos);
-        if (edible.collidesWith(*tempObject)) {
-                //snake.grow();
-                delete tempObject;
-                return;
-            }
-            delete tempObject;
-        }
+        // for (auto &obstacle : obstacles) {
+            //     GameObject tempObject = {nextHeadPos.x, nextHeadPos.y};
+            //     if (obstacle.collidesWith(tempObject)) {
+            //     // Handle the collision (e.g. end the game or increase the snake's length)
+            //             
+            //     }
+            // }
     }
-
-    
     void Game::update(){//update entities 
             Bios::Terminal::Key key = Bios::Terminal::get_key_press();
             if (key != Bios::Terminal::Key::NONE) {
@@ -109,6 +76,7 @@ const int COLS=15;
     
     /* when the game starts cool ascii title is displayed */
     void Game::StartupSign(){
+        Bios::Terminal::foreground_color("yellow", true);
         //   _____  _  _      _  _                 _____  _
         //  /  ___|| |(_)    | |(_)               /  ___|| |
         //  \ `--. | | _   __| | _  _ __    __ _  \ `--. | | _   _   __ _
