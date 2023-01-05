@@ -17,8 +17,8 @@ const int COLS=15;//vertical
         Bios::Terminal::clear();
         _isPlaying=true;
 
-        createEdible();
         walls();
+        createEdible();
         snake.start();
         while (_isPlaying==true){
             keyCheck();
@@ -70,14 +70,14 @@ const int COLS=15;//vertical
         }
         canvas.pen_color(Color::RED);
         canvas.draw_pixel(snake.head());
-        // working rectangle
-        canvas.pen_color(Color::BLUE);
-        canvas.rectangle({0, 0}, {ROWS-1,COLS-1});
 
         for (size_t i = 0; i < edibles.size(); i++) {
             canvas.pen_color(Color::WHITE);
             canvas.draw_pixel(edibles[i].point());
         }
+        // working rectangle
+        canvas.pen_color(Color::BLUE);
+        canvas.rectangle({0, 0}, {ROWS-1,COLS-1});
     }
     /* when the game starts cool ascii title is displayed */
     void Game::StartupSign(){
@@ -145,30 +145,34 @@ const int COLS=15;//vertical
         _render=render;
     }
     void Game::createEdible(){
+        // Generate a new edible at a random location
         size_t x = (rand()% COLS-1);
         size_t y = (rand()% ROWS-1);
-        // Generate a new edible at a random location
         Edible newEdible({x,y}, 1);
 
-         // Check if the new edible's location coincides with any existing wall or snake body
+        // Check if the new edible's location coincides with any existing wall or snake body
         bool validLocation = true;
-        for (const auto& wall : _walls) {
-            if (collisionDetection::detectCollision(newEdible, wall)) {
+        for(size_t i=0; i<_walls.size(); i++){
+            if(collisionDetection::detectCollision(newEdible,_walls[i])){
                 validLocation = false;
                 break;
             }
         }
-        if (validLocation) {
-            for (const auto& bodyPart : snake.body()) {
-                if (collisionDetection::detectCollision(newEdible, bodyPart)) {
-                    validLocation = false;
-                    break;
-                }
+        for (const auto& bodyPart : snake.body()) {
+            if (collisionDetection::detectCollision(newEdible, bodyPart)) {
+                validLocation = false;
+                break;
             }
         }
 
         // If the location is valid, add the new edible to the list
-        if (validLocation) {
+        if (validLocation==true) {
             edibles.push_back(newEdible);
+            return;
+        }else {
+            for(size_t i=0; i<edibles.size(); i++){
+                edibles.erase(edibles.begin() + i);
+            } 
+            createEdible();
         }
     }

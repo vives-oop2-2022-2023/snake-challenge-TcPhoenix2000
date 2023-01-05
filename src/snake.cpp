@@ -5,10 +5,6 @@ using namespace VIVES;
 Snake::Snake(void){
     //create snake of START_LENGTH
     //snake.resize(START_LENGTH);
-    for (unsigned int i = 0; i < START_LENGTH; i++){
-        snake.push_back({2,2});
-    }
-    down();
     if (isMoving==true){
         update();
     }
@@ -26,6 +22,11 @@ void Snake::right(){
     direction= Direction::RIGHT;
 }
 void Snake::start(){
+    snake.clear();
+    for (unsigned int i = 0; i < START_LENGTH; i++){
+        snake.push_back({2,2});
+    }
+    down();
     isMoving= true;
 }
 void Snake::stop(){
