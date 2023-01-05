@@ -15,6 +15,7 @@ const int COLS=15;//vertical
     void Game::start(){
         Bios::Terminal::flush();
         Bios::Terminal::clear();
+        _isPlaying=true;
 
         createEdible();
         walls();
@@ -25,15 +26,18 @@ const int COLS=15;//vertical
             draw();
             renderer();
             //sleep 
-            std::this_thread::sleep_for(500ms);           
+            //std::chrono::milliseconds(500); 
+            std::this_thread::sleep_for(500ms);            
         }
     }
     void Game::stop(){
-        snake.stop();
-        _isPlaying=false;
         Bios::Terminal::flush();
         Bios::Terminal::clear();
-        Linked_List::displayMenu();
+        snake.stop();
+        _isPlaying=false;
+        _walls.clear();
+        edibles.clear();
+        return;
     }
     void Game::update(){//update entities
         for(size_t i=0; i<edibles.size(); i++){
@@ -105,15 +109,16 @@ const int COLS=15;//vertical
     void Game::keyCheck(){
         Bios::Terminal::Key key = Bios::Terminal::get_key_press();
             if (key != Bios::Terminal::Key::NONE) {
-                //Terminal::clear();
                 switch (key) {
                     case Bios::Terminal::Key::LEFT:  snake.left();  break;
                     case Bios::Terminal::Key::RIGHT: snake.right(); break;
                     case Bios::Terminal::Key::UP:    snake.up();    break;
                     case Bios::Terminal::Key::DOWN:  snake.down();  break;
                     case Bios::Terminal::Key::ENTER: /*do something*/ ; break;
-                    case Bios::Terminal::Key::SPACE: stop(); break;
-                    case Bios::Terminal::Key::ESC: stop(); break;
+                    case Bios::Terminal::Key::SPACE:  stop(); break;
+                    case Bios::Terminal::Key::ESC:    stop(); break;
+                    case Bios::Terminal::Key::CTRL_C: exit(0); break;
+                    default: break;
                 }
             }
 
@@ -140,8 +145,30 @@ const int COLS=15;//vertical
         _render=render;
     }
     void Game::createEdible(){
-        size_t x = (rand()% COLS-2);
-        size_t y = (rand()% ROWS-2);
-        edibles.push_back(Edible({x,y},1));
+        size_t x = (rand()% COLS-1);
+        size_t y = (rand()% ROWS-1);
+        // Generate a new edible at a random location
+        Edible newEdible({x,y}, 1);
 
+         // Check if the new edible's location coincides with any existing wall or snake body
+        bool validLocation = true;
+        for (const auto& wall : _walls) {
+            if (collisionDetection::detectCollision(newEdible, wall)) {
+                validLocation = false;
+                break;
+            }
+        }
+        if (validLocation) {
+            for (const auto& bodyPart : snake.body()) {
+                if (collisionDetection::detectCollision(newEdible, bodyPart)) {
+                    validLocation = false;
+                    break;
+                }
+            }
+        }
+
+        // If the location is valid, add the new edible to the list
+        if (validLocation) {
+            edibles.push_back(newEdible);
+        }
     }

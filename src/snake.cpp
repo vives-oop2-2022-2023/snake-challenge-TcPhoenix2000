@@ -32,7 +32,7 @@ void Snake::stop(){
     isMoving= false;
 }
 void Snake::grow(unsigned int delta){
-    for (int i=0; i<delta; i++){
+    for (unsigned int i=0; i<delta; i++){
         snake.push_back(snake[snake.size()-1]);
     }
 }

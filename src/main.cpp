@@ -7,7 +7,9 @@
 
 VIVES::Game game;
 int main(){
+  while (true) {
     game.StartupSign();
     Linked_List::displayMenu();
+  }
   return 0;
 }

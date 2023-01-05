@@ -66,9 +66,6 @@ class linkedList {
                 throw Exception::NullPointerException();
             }
             return node->data();
-            // auto node = getNode(index);
-            // T selection_status = node->selected() ? "*" : " ";
-            // return selection_status + node->data();
         }
 
         Node<T> * tail() const {

@@ -36,11 +36,5 @@ namespace Linked_List{
             T data(void) {
                 return _data;
             }
-            bool selected() const {  // Add a new method to get the selection status
-                return _selected;
-            }
-            void selected(bool value) {  // Add a new method to set the selection status
-                _selected = value;
-            }
     };
 }
