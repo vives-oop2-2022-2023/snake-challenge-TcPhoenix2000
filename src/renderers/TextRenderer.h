@@ -12,7 +12,7 @@
 
 namespace VIVES {
     class TextRenderer : public IRender {
-    public:
-        void render(Canvas * canvas);
+        public:
+            void render(Canvas * canvas);
     };
 }

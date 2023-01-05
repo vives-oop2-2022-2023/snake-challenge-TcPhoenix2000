@@ -168,11 +168,7 @@ const int COLS=15;//vertical
         // If the location is valid, add the new edible to the list
         if (validLocation==true) {
             edibles.push_back(newEdible);
-            return;
         }else {
-            for(size_t i=0; i<edibles.size(); i++){
-                edibles.erase(edibles.begin() + i);
-            } 
             createEdible();
         }
     }

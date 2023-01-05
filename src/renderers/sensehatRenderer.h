@@ -13,6 +13,6 @@
 // namespace VIVES{
 //     class SenseHatRenderer: public IRender{
 //         public:
-//             void render(Canvas * canvas)override;
+//             void render(Canvas * canvas);
 //     };
 // }
