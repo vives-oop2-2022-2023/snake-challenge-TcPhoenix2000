@@ -22,8 +22,8 @@ make
 #TODO 
 
 ## UML Diagrams
----
 ### Game Objects
+---
 - The `collisionDetection` is a class that provides methods for detecting collisions between objects.
 ```c
 +--------------------+
@@ -67,8 +67,8 @@ make
                     | + Obstacle(Point point)
                     +-----------------+
 ```
----
 ### Helpers
+---
 - the `BitmapGenerator` class is a utility class that provides methods for generating a bitmap image file from raw image data. It has methods for creating the file header and info header of the bitmap file, as well as a method for generating the file itself. The class also has several private constants that are used in the generation process.
 ```c
 +-----------------+
@@ -83,8 +83,8 @@ make
 | - INFO_HEADER_SIZE: size_t
 +-----------------+
 ```
----
 ### Libraries
+---
 - The `IndexOutOfBoundException` class represents an exception that is thrown when an index is accessed that is outside the valid range of indices for a container or data structure.
 - The `NullPointerException` class represents an exception that is thrown when a null pointer is encountered in a program.
 ```c
@@ -205,8 +205,8 @@ make
 | + get_key_press(): Key
 +-------------------+
 ```
----
 ### Renderers
+---
 <!--
 - The `BitmapRenderer` class is a class that is used to generate a bitmap image file from data stored in a `Canvas` object. It has member variables that store the image data and the name of the output file, and it has a constructor and a `render` method to initialize and generate the image, respectively. It also has a destructor that deallocates memory used by the `buffer` array.
 ```c
@@ -253,8 +253,8 @@ make
 |  + render(Canvas*)         |
 +----------------------------+
 ```
----
 ### Source code
+---
 - The `Canvas` class is responsible for storing and drawing pixel data on a two-dimensional grid with a specified width and height. It has methods for setting the active drawing color, drawing pixels, lines, and rectangles, and clearing the canvas. It also has methods for accessing the width and height of the canvas and the color of individual pixels.
 ```c
 +---------------+
