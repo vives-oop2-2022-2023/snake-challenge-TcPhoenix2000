@@ -10,7 +10,6 @@
 
 #include "../lib/terminal.h"
 #include <sstream>
-#include <iostream>
 #include "render_interface.h"
 
 namespace VIVES {
