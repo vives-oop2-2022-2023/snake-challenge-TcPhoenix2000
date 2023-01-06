@@ -10,7 +10,7 @@ make
 ```
 ## How to run it
 ```
-./bin/program
+./bin/SlidingSlug
 ```
 ## Example usage
 #TODO 
@@ -365,4 +365,7 @@ Later on we will need to add the following classes:
 * ^ Renderer interface + 1 implementations
 
 ## License and author info
-#TODO 
+Author: Tc_phoenix_
+
+### Acknowledgements
+* BioBoost for providing necessary libraries for this project

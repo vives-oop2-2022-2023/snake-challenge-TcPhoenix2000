@@ -21,7 +21,7 @@ CFLAGS=-c -Wall -std=c++2a
 # 	https://github.com/gbmhunter/CppLinuxSerial.git
 
 # Name of executable output
-TARGET= program
+TARGET= SlidingSlug
 SRCDIR= src
 SUPDIR= src/*
 BUILDDIR= bin
