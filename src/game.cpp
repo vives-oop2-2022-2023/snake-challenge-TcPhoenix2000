@@ -71,13 +71,15 @@ const int COLS=15;//vertical
         canvas.pen_color(Color::RED);
         canvas.draw_pixel(snake.head());
 
+        canvas.pen_color(Color::WHITE);
         for (size_t i = 0; i < edibles.size(); i++) {
-            canvas.pen_color(Color::WHITE);
             canvas.draw_pixel(edibles[i].point());
         }
-        // working rectangle
+        // working walls
         canvas.pen_color(Color::BLUE);
-        canvas.rectangle({0, 0}, {ROWS-1,COLS-1});
+        for (size_t i = 0; i < _walls.size(); i++) {
+            canvas.draw_pixel(_walls[i].point());
+        }
     }
     /* when the game starts cool ascii title is displayed */
     void Game::StartupSign(){
@@ -127,18 +129,16 @@ const int COLS=15;//vertical
     void Game::walls(){
         // Add corners to the walls
         _walls.push_back(Obstacle({0, 0}));
-        _walls.push_back(Obstacle({0, ROWS - 1}));
-        _walls.push_back(Obstacle({COLS - 1, 0}));
-        _walls.push_back(Obstacle({COLS - 1, ROWS - 1}));
+        _walls.push_back(Obstacle({0, COLS - 1}));
+        _walls.push_back(Obstacle({ROWS - 1, 0}));
+        _walls.push_back(Obstacle({ROWS - 1,COLS - 1}));
 
         // Insert walls at the edge of the square
         for (size_t i = 0; i < (ROWS); i++) {
-            _walls.push_back(Obstacle({0, i}));
-            _walls.push_back(Obstacle({ROWS - 1, i}));
-        }
-        for (size_t i = 1; i < (COLS - 1); i++) {
-            _walls.push_back(Obstacle({i, 0}));
-            _walls.push_back(Obstacle({i, COLS - 1}));
+            _walls.push_back(Obstacle({0, i}));         //left wall
+            _walls.push_back(Obstacle({i, 0}));         //top wall
+            _walls.push_back(Obstacle({i, COLS - 1}));  //bottom wall
+            _walls.push_back(Obstacle({ROWS - 1, i}));  //right wall
         }
     }
     void Game::setRenderer(IRender * render){
@@ -146,8 +146,8 @@ const int COLS=15;//vertical
     }
     void Game::createEdible(){
         // Generate a new edible at a random location
-        size_t x = (rand()% COLS-1);
-        size_t y = (rand()% ROWS-1);
+        size_t x = (rand()% ROWS-1);
+        size_t y = (rand()% COLS-1);
         Edible newEdible({x,y}, 1);
 
         // Check if the new edible's location coincides with any existing wall or snake body
