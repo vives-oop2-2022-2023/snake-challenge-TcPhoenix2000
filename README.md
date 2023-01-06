@@ -8,18 +8,37 @@ using linux
 ```
 make
 ```
+### Prerequisites
+* A C++ compiler
+* Make
+### Installation
+1. Clone the repository
+```bash
+git clone https://github.com/vives-oop2-2022-2023/snake-challenge-TcPhoenix2000.git
+```
+2. Navigate to the project directory
+```bash
+cd snake-challenge-TcPhoenix2000
+```
+3. Compile the source code
+```bash
+make
+```
 ## How to run it
 ```
 ./bin/SlidingSlug
 ```
 ## Example usage
-#TODO 
+To start the game, simply run the program and follow the on-screen prompts to select your desired options and start playing.
 
 ## Screenshots
-#TODO
+#TODO Add screenshots of the game in action.
 
 ## How to set up the dev environment
-#TODO 
+- on a windows machine you must use WSL.
+- on a Linux machine:
+
+To set up the development environment for this project, you will need to have a C++ compiler and a make tool installed on your system. You can then clone the repository and build the project using the provided Makefile.
 
 ## UML Diagrams
 ### Game Objects
