@@ -5,10 +5,11 @@ void displayMenu::OptionsMenu() {
     // Add some options to the menu
     optionsMenu.clear();
     optionsMenu.push_back("Terminal renderer (default)");
-    optionsMenu.push_back("Sensehat renderer");
     optionsMenu.push_back("BitMap renderer");
+    optionsMenu.push_back("Sensehat renderer (not implemented)");
     VIVES::TextRenderer *newTextRenderer = new VIVES::TextRenderer();
     VIVES::BitmapRenderer *newBitRenderer = new VIVES::BitmapRenderer();
+    //VIVES::SenseHatRenderer *newSenseRenderer = new VIVES::SenseHatRenderer();
     
         std::cout << "select renderer" << "\r\n";
         // Display the options menu
@@ -37,12 +38,12 @@ void displayMenu::OptionsMenu() {
                 game.setRenderer(newTextRenderer);
                 break;
             case 1:
-                // Select the renderer sensehat
-                //game.setRenderer(new VIVES::SenseHatRenderer());
-                break;
-            case 2:
                 // Select the renderer Bitmap
                 game.setRenderer(newBitRenderer);
+                break;
+            case 2:
+                // Select the renderer sensehat
+                //game.setRenderer(newSenseRenderer);
                 break;
             }
 
