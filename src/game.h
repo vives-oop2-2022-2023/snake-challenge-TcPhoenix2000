@@ -30,7 +30,7 @@
 namespace VIVES{
     class Game{
         public:
-            const size_t ROWS=15;//horizontal
+            const size_t ROWS=40;//horizontal
             const size_t COLS=15;//vertical
         private:
             Snake snake;

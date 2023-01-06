@@ -37,7 +37,7 @@ using namespace VIVES;
         for(size_t i=0; i<edibles.size(); i++){
             if(collisionDetection::detectCollision(snake.nextSnakeHeadPosition(),edibles[i])){
                 snake.grow(edibles[i].growth());
-                edibles.erase(edibles.begin() + i);
+                edibles.erase(edibles.begin()+i);
                 createEdible();
             }
         }
