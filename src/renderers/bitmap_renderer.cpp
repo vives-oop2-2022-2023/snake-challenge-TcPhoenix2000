@@ -1,15 +1,10 @@
 #include "bitmap_renderer.h"
 
-#include <vector>
-#include "../color.h"
-#include "../helpers/bitmap_generator.h"
-
 namespace VIVES {
 
-  BitmapRenderer::BitmapRenderer(size_t width, size_t height, std::string filename)
+  BitmapRenderer::BitmapRenderer(std::string filename)
   : filename(filename) {
 
-    buffer = new unsigned char[width * height * PIXEL_DEPTH];
   }
 
   BitmapRenderer::~BitmapRenderer(void) {
@@ -18,6 +13,7 @@ namespace VIVES {
   }
 
   void BitmapRenderer::render(Canvas * canvas) {
+    buffer = new unsigned char[canvas->width() * canvas->height() * PIXEL_DEPTH];
     unsigned char * pBuffer = buffer;
 
     // Default origin of BMP is bottom left corner, so we count down y

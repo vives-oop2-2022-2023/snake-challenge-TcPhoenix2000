@@ -1,12 +1,14 @@
 #include "gameMenu.h"
 
 namespace Linked_List {
-OptionsMenu::OptionsMenu() {
+void displayMenu::OptionsMenu() {
     // Add some options to the menu
     optionsMenu.clear();
-    optionsMenu.push_back("terminal renderer (default)");
-    optionsMenu.push_back("sensehat renderer");
-    optionsMenu.push_back("Return to main menu");
+    optionsMenu.push_back("Terminal renderer (default)");
+    optionsMenu.push_back("Sensehat renderer");
+    optionsMenu.push_back("BitMap renderer");
+    VIVES::TextRenderer *newTextRenderer = new VIVES::TextRenderer();
+    VIVES::BitmapRenderer *newBitRenderer = new VIVES::BitmapRenderer();
     
         std::cout << "select renderer" << "\r\n";
         // Display the options menu
@@ -24,34 +26,29 @@ OptionsMenu::OptionsMenu() {
             
         }
         else{
-            // Select the option
-        optionsMenu.getNode(selection);
         
         game.StartupSign();
         // Display the selected option
         std::cout << "Selected: " << optionsMenu.get(selection) << "\r\n";
-
         // Do something based on the selected option
         switch (selection) {
             case 0:
                 // Select the renderer default
-                game.setRenderer(new VIVES::TextRenderer());
-                selection = 2;
+                game.setRenderer(newTextRenderer);
                 break;
             case 1:
                 // Select the renderer sensehat
                 //game.setRenderer(new VIVES::SenseHatRenderer());
                 break;
             case 2:
-                // Return to the main menu
-                optionsMenu.clear();
-                displayMenu();
-                return;
+                // Select the renderer Bitmap
+                game.setRenderer(newBitRenderer);
+                break;
             }
 
         }
     //}
-}    
+}   
 
 displayMenu::displayMenu() {
     // Add some menu items
@@ -84,7 +81,7 @@ displayMenu::displayMenu() {
                 continue;
             }else{
             // Select the menu item
-            menu.getNode(selection);
+            //menu.getNode(selection);
 
             game.StartupSign();
             // Display the selected menu item
@@ -104,6 +101,7 @@ displayMenu::displayMenu() {
                     menu.clear();
                     // Quit the program
                     exit(0);
+                    break;
                 }
             }
         }    

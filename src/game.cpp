@@ -8,13 +8,9 @@
 using namespace std;
 using namespace VIVES;
 
-const int ROWS=40;//horizontal
-const int COLS=15;//vertical
     Game::Game(void):canvas(ROWS,COLS){
     }
     void Game::start(){
-        Bios::Terminal::flush();
-        Bios::Terminal::clear();
         _isPlaying=true;
 
         walls();
@@ -31,8 +27,6 @@ const int COLS=15;//vertical
         }
     }
     void Game::stop(){
-        Bios::Terminal::flush();
-        Bios::Terminal::clear();
         snake.stop();
         _isPlaying=false;
         _walls.clear();
@@ -61,6 +55,8 @@ const int COLS=15;//vertical
 
     void Game::draw(){//draw entities on canvas
         canvas.clear();
+        canvas.pen_color(Color::RED);
+        canvas.draw_pixel(snake.head());
 
         canvas.pen_color(Color::GREEN);
         //canvas.draw_pixel(snake.body());//temp canvas.draw_pixel(snake.body())
@@ -68,8 +64,6 @@ const int COLS=15;//vertical
         for (size_t i = 0; i < snake_body.size(); i++) {
             canvas.draw_pixel(snake_body[i]);
         }
-        canvas.pen_color(Color::RED);
-        canvas.draw_pixel(snake.head());
 
         canvas.pen_color(Color::WHITE);
         for (size_t i = 0; i < edibles.size(); i++) {
@@ -141,7 +135,7 @@ const int COLS=15;//vertical
             _walls.push_back(Obstacle({ROWS - 1, i}));  //right wall
         }
     }
-    void Game::setRenderer(IRender * render){
+    void Game::setRenderer(IRender *render){
         _render=render;
     }
     void Game::createEdible(){

@@ -24,9 +24,14 @@
 
 #include "./renderers/render_interface.h"
 #include "./renderers/TextRenderer.h"
+#include "./renderers/bitmap_renderer.h"
+//#include "./renderers/sensehatRenderer.h"
 
 namespace VIVES{
     class Game{
+        public:
+            const size_t ROWS=15;//horizontal
+            const size_t COLS=15;//vertical
         private:
             Snake snake;
             Canvas canvas;
@@ -34,7 +39,6 @@ namespace VIVES{
 
             std::vector<Obstacle> _walls;
             std::vector<Edible> edibles;
-
 
             bool _isPlaying = true;
         public:

@@ -14,14 +14,9 @@ namespace Linked_List {
     private:
         VIVES::Game game;
         linkedList<std::string> menu;
-    public:
-        displayMenu();
-    };
-    class OptionsMenu {
-    private:
-        VIVES::Game game;
         linkedList<std::string> optionsMenu;
     public:
-        OptionsMenu();
-    };    
+        displayMenu();
+        void OptionsMenu();
+    };
 }

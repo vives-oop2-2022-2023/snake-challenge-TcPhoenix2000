@@ -117,7 +117,6 @@ make
 +---------------------------+---------------------------+
 ```
 - The `displayMenu` class represents a menu that is displayed to the user in a game, and it has a member variable of type `linkedList<std::string>` that holds the menu items.
-- The `OptionsMenu` class represents an options menu in a game, and it has a member variable of type `linkedList<std::string>` that holds the options.
 ```c
                                         +-----------------+
                                         |       Game      |
@@ -134,19 +133,10 @@ make
 +---------------------------+---------------------------+
 | - game: VIVES::Game                                   |
 | - menu: linkedList<std::string>                       |
-| + displayMenu()                                       |
-+---------------------------+---------------------------+
-|
-|
-|
-+---------------------------+---------------------------+
-|                                                       |
-|                     OptionsMenu                       |
-|                                                       |
-+---------------------------+---------------------------+
-| - game: VIVES::Game                                   |
 | - optionsMenu: linkedList<std::string>                |
-| + OptionsMenu()                                       |
++---------------------------+---------------------------+
+| + displayMenu()                                       |
+| + OptionsMenu(): void                                 |
 +---------------------------+---------------------------+
 ```
 - The `linkedList` class template is a generic class that represents a singly linked list data structure, and it provides methods for adding and removing elements from the list, accessing elements in the list by index, and getting the length of the list. It also has a destructor that clears the list when an object of the class is destroyed.
@@ -207,7 +197,6 @@ make
 ```
 ### Renderers
 ---
-<!--
 - The `BitmapRenderer` class is a class that is used to generate a bitmap image file from data stored in a `Canvas` object. It has member variables that store the image data and the name of the output file, and it has a constructor and a `render` method to initialize and generate the image, respectively. It also has a destructor that deallocates memory used by the `buffer` array.
 ```c
 +---------------------------+
@@ -221,7 +210,7 @@ make
 | + render(Canvas*): void
 | + ~BitmapRenderer(): void
 +---------------------------+
-```-->
+```
 - The `IRender` class is an interface that defines a `render` method which takes in a pointer to a `Canvas` object as an argument. This method must be implemented by any class that implements the `IRender` interface.
 ```c
 +----------------------------+
@@ -373,8 +362,7 @@ make
 Later on we will need to add the following classes:
 
 * SensehatRenderer #TODO
-* BitmapRenderer #TODO
-* ^ Renderer interface + 2 implementations
+* ^ Renderer interface + 1 implementations
 
 ## License and author info
 #TODO 

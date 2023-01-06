@@ -5,4 +5,4 @@ namespace VIVES{
     public:
     virtual void render(Canvas *canvas) = 0;
   };
-}
+};

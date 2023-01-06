@@ -1,17 +1,21 @@
 #pragma once
 
-#include "../canvas.h"
 #include <string>
+#include <vector>
 
+#include "../helpers/bitmap_generator.h"
+#include "../canvas.h"
+
+#include "render_interface.h"
 namespace VIVES {
 
-  class BitmapRenderer {
+  class BitmapRenderer: public IRender{
 
     public:
-      BitmapRenderer(size_t width, size_t height, std::string filename="output.bmp");
+      BitmapRenderer(std::string filename="./bin/output.bmp");
 
     public:
-      void render(Canvas * canvas);
+      void render(Canvas * canvas)override;
 
     public:
       ~BitmapRenderer(void);
